@@ -1,0 +1,239 @@
+.carousel {
+    position: relative;
+    margin: auto auto;
+    width: 90%;
+    height: 80%;
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: -10;
+}
+
+.carousel__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); */
+    min-width: 100%;
+    min-height: 100%;
+    opacity: 0;
+    -webkit-animation: changeHeaderSlide 21s linear infinite;
+            animation: changeHeaderSlide 21s linear infinite;
+}
+
+.carousel__img:nth-of-type(2) {
+    animation-delay: 7s;
+}
+
+.carousel__img:nth-of-type(3) {
+    animation-delay: 14s;
+}
+
+.carousel__slogan {
+    position: absolute;
+    top: 14%;
+    left: 0;
+    -webkit-animation-delay: 7s;
+    animation-delay: 7s;
+    text-align: center;
+    text-shadow: 1px 1px var(--main-color);
+    font-family: var(--main-font);
+    color: white;
+}
+
+.carousel__slogan:nth-of-type(2) {
+    /* top: 12%;
+    right:58%; */
+    -webkit-animation-delay: 7s;
+            animation-delay: 7s;
+}
+
+.carousel__slogan:nth-of-type(3) {
+    /* top: 45%;
+    right: 55%; */
+    -webkit-animation-delay: 14s;
+    animation-delay: 14s;
+}
+
+.carousel__sloganMain {
+    width: 100%;
+    padding: 10px 20px; 
+    font-size: 1.5rem; 
+    font-family: var(--main-font);
+    letter-spacing: 2px;
+    padding: 10px 20px;
+    border: 1px solid var(--main-color);
+    border-bottom: none;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    background-color: rgba(51,34,34, .3);  
+    text-shadow: 1px 3px var(--main-color);
+    -webkit-animation: headerCaptionH1 21s infinite linear both;
+    animation: headerCaptionH1 21s infinite linear both;
+}
+
+.carousel__sloganTwo {
+    width: 100%;
+    opacity: 0;
+    background-color: rgba(51,34,34, .3);
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border: 1px solid var(--main-color);
+    border-top: none;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    text-shadow: 1px 2px var(--main-color);
+    -webkit-animation: headerCaptionH2 21s infinite linear both;
+    animation: headerCaptionH2 21s infinite linear both;
+}
+
+.carousel__slogan:nth-of-type(2) .carousel__sloganMain,
+.carousel__slogan:nth-of-type(2) .carousel__sloganTwo {
+    animation-delay: 7s;
+}
+
+.carousel__slogan:nth-of-type(3) .carousel__sloganMain,
+.carousel__slogan:nth-of-type(3) .carousel__sloganTwo {
+    animation-delay: 14s;
+}
+
+
+
+
+@keyframes changeHeaderSlide {
+    0% {
+        opacity: 0;
+    }
+
+    5% {
+        opacity: 1;
+    }
+
+    33.3333% {
+        opacity: 1;
+    }
+
+    38.3333% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes headerCaptionH1 {
+    0% {
+        opacity: 0
+    }
+
+    5% {
+        opacity: 1;
+    }
+
+    28.5% {
+        opacity: 1;
+    }
+
+    33% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes headerCaptionH2 {
+    0% {
+        opacity: 0
+    }
+    3% {
+        opacity: 0;
+    }
+
+    13.5% {
+        opacity: 1;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    32% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@media (orientation: landscape) {
+    .carousel {
+        height: 90%;
+    }
+
+    .carousel__slogan {
+        width: 60%;
+        top: 25%;
+        left: 35%;
+    }
+    
+    .carousel__slogan:nth-of-type(2) {
+        width: 50%;
+        top: 30%;
+        left: 8%;
+    }
+    
+    .carousel__slogan:nth-of-type(3) {
+        width: 40%;
+        top: 55%;
+        left: 2%;
+    }
+    
+    .carousel__sloganMain {
+        font-size: 1.1rem;
+    }
+    
+    .carousel__sloganTwo {
+        font-size: .9rem;
+        letter-spacing: 1px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .carousel {
+        width: 95%;
+        height: 85%;
+    }
+
+    .carousel__slogan {
+        width: 60%;
+        top: 17%;
+        left: 35%;
+    }
+    
+    .carousel__slogan:nth-of-type(2) {
+        width: 40%;
+        top: 15%;
+        left: 8%;
+    }
+    
+    .carousel__slogan:nth-of-type(3) {
+        width: 40%;
+        top: 55%;
+        left: 5%;
+    }
+    
+    .carousel__sloganMain {
+        font-size: 2.3rem;
+    }
+    
+    .carousel__sloganTwo {
+        font-size: 1.6rem;
+        letter-spacing: 1px;
+    }
+}

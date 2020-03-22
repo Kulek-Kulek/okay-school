@@ -1,0 +1,15 @@
+.navigation__list {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+@media (min-width:1024px){
+    .navigation__list {
+        flex-direction: row;
+        /* justify-content: space-around; */
+    }
+}

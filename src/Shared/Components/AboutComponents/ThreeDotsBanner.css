@@ -1,0 +1,76 @@
+
+.three-dots {
+    height: 15vh;
+    line-height: 5rem;
+}
+
+.three-dots__wrapper {  
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.three-dots__more {
+    font-family: var(--main-font);
+    font-weight: 700;
+    text-align: center;
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+}
+
+.three-dots__dots {
+    position: relative;
+    font-size: 3.5rem;
+    color: var(--green-color);
+}
+
+.three-dots__dots::after {
+    position: absolute;
+    bottom: 12%;
+    left: 0%;
+    content: '';
+    background-color: #fff;
+    width: 100%;
+    height: 40%;
+    font-family: 'Roboto Mono', monospace;
+    -webkit-animation: showDots 2s infinite steps(4);
+            animation: showDots 2s infinite steps(4);    
+}
+
+.three-dots__a {
+    text-decoration: none;
+}
+
+.three-dots__a:hover {
+    cursor: pointer;
+}
+
+@keyframes showDots {
+    to {
+        left: 120%; 
+    }
+}
+
+
+@media (orientation: landscape) {
+    .three-dots {
+        height: 30vh;
+    }
+    .three-dots__more {
+        font-size: 2.5rem;
+        letter-spacing: 3px;
+    }
+    .three-dots__dots {
+        font-size: 4rem;
+    }
+}
+@media (min-width: 1024px) {
+
+    .three-dots__more {
+        font-size: 3.5rem;
+        letter-spacing: 5px;
+    }
+    .three-dots__dots {
+        font-size: 6rem;
+    }
+}

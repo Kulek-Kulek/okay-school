@@ -1,0 +1,29 @@
+.logo { 
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    letter-spacing: 2px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.logo__pink {
+    display: inline-block;
+    color: rgb(223, 14, 153);
+    -webkit-transform: skew(-10deg);
+            transform: skew(-10deg);
+    font-size: 2rem;
+    font-weight: normal;
+    margin-right: -3px;
+}
+.logo__orange {
+    color: orange;
+}
+.logo__green {
+    color: green;
+}
+.logo__blue {
+    color: blue;
+}
+
