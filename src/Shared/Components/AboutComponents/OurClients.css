@@ -1,0 +1,234 @@
+.our-clients {
+    display: flex;
+    flex-direction: column;
+    height: 105vh;
+    margin-bottom: 5%;
+}
+
+.our-clients__motto {
+    flex-basis: 60%;
+    background-color: var(--main-color);
+    display: flex;
+}
+
+.our-clients__companies {
+    flex-grow: 1;
+}
+
+.our-clients__left {
+    flex-grow: 1;
+}
+
+.our-clients__right {
+    flex-basis: 90%;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: justify;
+    font-family: var(--main-font);
+    padding: 0 5%;
+}
+
+.our-clients__main-title {
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    margin-top: 8%;
+    font-weight: 700;
+}
+
+.our-clients__subtitle {
+    font-size: .9rem;
+    color: var(--green-color);
+    margin: 2% 0 6% 0;
+}
+
+.our-clients__p {
+    font-size: .8rem;
+    font-family: sans-serif;
+    letter-spacing: .8px;
+    line-height: 18px;
+}
+
+.our-clients__p::first-letter {
+    color: var(--green-color);
+    font-size: 1.4rem;
+}
+
+.our-clients__companies {
+    display: flex;
+    flex-direction: column;
+}
+
+.our-clients__companies-title-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--main-font);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 1px 0 0 var(--main-color);
+    color: #fff;
+    flex-basis: 25%;
+    background-color: var(--green-color);
+}
+
+.our-clients__companies-imagies-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    flex-grow: 1;
+    height: 75%;
+}
+
+.our-clients__logo-div {
+    flex-basis: 40%;
+    height: 20%;
+}
+
+.our-clients__logo-img {
+    width: 100%;
+    height: 100%;
+}
+
+.our-clients__button-div {
+    margin-top: 8%;
+    width: 40%;
+}
+
+.our-clients__button {
+    width: 100%;
+    font-size: .8rem;
+    padding: 4px 10px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    background-color: transparent;
+    color: inherit;
+    letter-spacing: 3px;
+    font-family: var(--main-font);
+    cursor: pointer;
+}
+
+@media (orientation: landscape) {
+    .our-clients {
+        height: 190vh;
+    }
+    .our-clients__main-title {
+        font-size: 1.5rem;
+        letter-spacing: 3px;
+        margin-top: 3%;
+    }
+    .our-clients__subtitle {
+        font-size: 1.1rem;
+        margin: 1% 0 3% 0;
+    }
+    .our-clients__p {
+        font-size: .9rem;
+        letter-spacing: 1.5px;
+    }
+    .our-clients__p::first-letter {
+        font-size: 1.6rem;
+    }
+    .our-clients__button-div {
+        margin-top: 4%;
+        width: 30%;
+    }
+    .our-clients__button {
+        font-size: 1.1rem;
+        padding: 7px 20px;
+    }
+    .our-clients__logo-div {
+        flex-basis: 35%;
+        height: 20%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .our-clients {
+        flex-direction: row;
+        margin: 0 2% 5% 2%;
+        height: 100vh;
+        padding: 20px 0;
+    }
+    .our-clients__motto {
+        flex-basis: 50%;
+    }
+    .our-clients__companies {
+        flex-basis: 50%;
+    }
+    .our-clients__right {
+        flex-basis: 65%;
+        padding: 0 8% 0 0;
+    }
+    .our-clients__main-title {
+        font-size: 2rem;
+        letter-spacing: 5px;
+        margin-top: 8%;
+        font-weight: normal;
+    }
+    .our-clients__subtitle {
+        font-size: 1.4rem;
+        color: var(--green-color);
+        margin: 2% 0 10% 0;
+        font-weight: normal;
+    }
+    .our-clients__p {
+        font-size: 1rem;
+        letter-spacing: 1.2px;
+        padding-right: 0%;
+        line-height: 33px;
+    }
+    .our-clients__p::first-letter {
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
+    .our-clients__button-div {
+        margin-top: 7%;
+        width: 45%;
+        height: 37px;
+        overflow: hidden;
+    }
+    .our-clients__button {
+        display: block;
+        line-height: 16px;
+        margin: 2px auto;
+        letter-spacing: 5px;
+        width: 90%;
+        height: 90%;
+        transition: .5s;
+    }
+    .our-clients__button::after {
+        position: absolute;
+        content: 'zapraszam';
+        background-color: var(--green-color);
+        left: 0;
+        top: 0;
+        transform: scale(0);
+        width: 100%;
+        height: 100%;
+        line-height: 1.8rem;
+        letter-spacing: 3px;
+        text-shadow: 1px 0 0 var(--main-color);
+        border-radius: 5px;
+        transition: .3s;
+    }
+    .our-clients__button-div:hover .our-clients__button::after {
+        transform: scale(1);
+        transition: .3;
+    }
+    .our-clients__companies-title-wrapper {
+        color: #fff;
+        flex-basis: 15%;
+    }
+    .our-clients__companies-title {
+        font-weight: 400;
+        font-size: 32px;
+    }
+    .our-clients__logo-div {
+        flex-basis: 40%;
+        padding: 0 3%;
+        height: 10%;
+    }
+}

@@ -7,9 +7,10 @@ const NavLinks = props => {
 
     const menuList = [
         { name: 'home', path: '/about', exact: true },
-        { name: 'nasze kursy', path: '/offer' },
+        { name: 'oferta kursów', path: '/offer' },
         { name: 'dla partnerów', path: '/partners' },
-        // { name: 'koszyk', path: '/orders' }
+        { name: 'koszyk', path: '/orders' },
+        { name: 'załóż konto/zaloguj', path: '/orders' }
     ];
 
     const navLinks = menuList.map(link => (

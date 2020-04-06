@@ -1,7 +1,6 @@
 .logo { 
     display: flex;
     align-items: center;
-    /* justify-content: center; */
     letter-spacing: 2px;
     font-size: 1.8rem;
     font-weight: bold;

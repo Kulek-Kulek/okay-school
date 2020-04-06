@@ -1,0 +1,95 @@
+.learn-online {
+    position: relative;
+    height: 30vh;
+    margin-bottom: 5%;
+}
+
+.learn-online__mac-wrppper {
+    position: absolute;
+    top: -37%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 70%;
+    width: 90%;
+    z-index: 50;
+}
+
+.learn-online__img {
+    display: block;
+    margin: 0 auto;
+    height: 100%;
+    width: 90%;
+}
+
+.learn-online__backgorund {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    margin-top: 30%;
+    background-image: url('../../../images/learn-online/bg-learn-online.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: grayscale(100%);
+}
+
+.learn-online__slogans {
+    width: 90%;
+    height: 30%;
+}
+
+.learn-online__single-slogan {
+    text-align: start;
+    color: #fff;
+    font-family: var(--main-font);
+    font-size: .9rem;
+}
+
+.learn-online__single-slogan::after {
+    content: '_';
+    animation: cursor .4s linear alternate infinite;
+}
+
+@keyframes cursor {
+    0%, 30% {
+        opacity: 0;
+    }
+    70%, 100% {
+        opacity: 1;
+    }
+}
+
+@media (orientation: landscape) {
+    .learn-online {
+        height: 70vh;
+        margin-bottom: 7%;
+    }
+    .learn-online__mac-wrppper {
+        position: absolute;
+        top: -53%;
+        height: 100%;
+    }
+    .learn-online__backgorund {
+        margin-top: 25%;
+    }
+    .learn-online__slogans {
+        width: 50%;
+    }
+    .learn-online__single-slogan {
+        font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .learn-online__slogans {
+        width: 40%;
+    }
+    .learn-online__single-slogan {
+        font-size: 2rem;
+    }
+}

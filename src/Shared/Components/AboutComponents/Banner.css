@@ -115,26 +115,13 @@
 
 @media (min-width: 1024px) {
     .picture-banner {
-        /* flex-direction: row; */
         height: 60vh;
         margin: 80px 0;
     }
     
-    /* .picture-banner__imgWrapper {
-        margin: 0 10px;
-    } */
-    
-    /* .picture-banner__imgWrapper:first-child {
-      margin-bottom: 0;
-    } */
-
     .picture-banner__sloganButton {
         height: 25%;
     }
-
-    /* .picture-banner__imgWrapper:nth-of-type(2) .picture-banner__sloganButton {
-        justify-content: flex-start;
-    } */
     
     .picture-banner__slogan {
         font-size: 1.5rem;

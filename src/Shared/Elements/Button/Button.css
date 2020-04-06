@@ -1,0 +1,30 @@
+.pulse {
+    animation: pulse 1.3s infinite alternate linear;
+}
+
+.pulse:hover {
+    animation-play-state: paused;
+}
+
+@keyframes pulse {
+    to {
+        transform: scale(1.02);
+    }
+}
+
+.btn-arrow-right {
+    display: none;
+}
+
+.btn-arrow-right--active {
+    display: inline-block;
+    color: var(--green-color);
+    margin-left: 5px;
+    animation: btn-arrow-right 1.3s linear infinite alternate;
+}
+
+@keyframes btn-arrow-right {
+    to {
+        transform: translateX(5px);
+    }
+}

@@ -8,6 +8,7 @@
     background: #fff;
     border: none;
     box-shadow: 3px 2px 6px rgba(51, 34, 34, 0.6);
+    z-index: 1000;
 }
 
 .nav__hamburger-logo {
@@ -44,7 +45,7 @@
     position: absolute;
     top: 0;
     left: -1rem;
-    transform: translate(50%,10%);
+    transform: translate(50%, 10%);
     background-color: #fff;
     width: 8px;
     height: 5px;
@@ -70,12 +71,9 @@
 }
 
 .navigation__sideDrawer {
- height: 100%;
- /* background-color: red; */
+    height: 100%;
+    /* background-color: red; */
 }
-
-
-
 
 @keyframes hamburger-snail-move {
     to {
@@ -90,24 +88,15 @@
 } */
 
 @media (min-width: 1024px) {
-    .nav__hamburger,
-    .nav__hamburger-logo,
-    .nav__hamburger-wrapper,
-    .nav__hamburger-span,
-    .nav__hamburger-snail,
-    .nav__hamburger-span:nth-of-type(2) .nav__haburger-snail,
-    .nav__hamburger-span:nth-of-type(3) .nav__haburger-snail,
-    .navigation__sideDrawer {
+    .nav__hamburger, .nav__hamburger-logo, .nav__hamburger-wrapper, .nav__hamburger-span, .nav__hamburger-snail, .nav__hamburger-span:nth-of-type(2) .nav__haburger-snail, .nav__hamburger-span:nth-of-type(3) .nav__haburger-snail, .navigation__sideDrawer {
         display: none;
     }
-
     .header__logo {
         display: flex;
         text-decoration: none;
         flex-basis: 10%;
         justify-content: center;
     }
-    
     .navigation {
         position: absolute;
         left: 0;

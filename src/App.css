@@ -1,14 +1,13 @@
-
 :root {
-  --main-color: rgb(51, 34, 34);;
-  --green-color: #2AC503;
+  --main-color: rgb(51, 34, 34);
+  ;
+  --green-color: #2ac503;
   --main-font: 'Roboto Mono', monospace;
+  --open-sans: 'Open Sans', sans-serif;
 }
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-
-
