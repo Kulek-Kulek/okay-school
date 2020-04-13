@@ -31,7 +31,7 @@
     left: -112%;
     content: '';
     width: 100%;
-    height: 2px;
+    height: 3px;
     background-color: var(--main-color);
     -webkit-transition: .2s linear;
     transition: .2s linear;

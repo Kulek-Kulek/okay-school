@@ -5,7 +5,6 @@ import WelcomePage from './Landing/Pages/welcomePage/WelcomePage';
 import AboutPage from './Landing/Pages/AboutPage/AboutPage';
 import OfferPage from './Landing/Pages/OfferPage/OfferPage';
 import PartnersPage from './Landing/Pages/PartnersPage/PartnersPage';
-import Navigation from './Shared/Components/Navigation/Navigation';
 import Footer from './Shared/Components/Footer/Footer';
 import './App.css';
 
@@ -32,7 +31,6 @@ const App = () => {
 
   return (
     <Router>
-      <Navigation />
       {routes}
       <Footer />
     </Router>

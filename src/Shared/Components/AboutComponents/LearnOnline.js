@@ -17,12 +17,10 @@ const LearnOnline = props => {
                 <img src={imgMac} alt='mac' className='learn-online__img' />
             </div>
             <div className='learn-online__backgorund'>
-                <div className='learn-online__slogans'>
-                    {/* <p className='learn-online__single-slogan'>hjgfjhdsgfhgafhgashghcdsagfhgahghadfghdsghfgdshkdshkfg</p> */}
-                </div>
+                <div className='learn-online__slogans'></div>
             </div>
         </section>
     );
-}
+};
 
 export default LearnOnline;

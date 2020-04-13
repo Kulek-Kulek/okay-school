@@ -51,7 +51,7 @@
 }
 
 .learn-online__single-slogan::after {
-    content: '_';
+    content: '|';
     animation: cursor .4s linear alternate infinite;
 }
 

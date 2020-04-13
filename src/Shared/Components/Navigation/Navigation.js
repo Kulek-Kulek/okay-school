@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import NavLinks from './NavLinks';
-// import MainHeader from '../MainHeader/MainHeader';
 import Logo from '../Logo/Logo';
 import SideDrawer from '../Navigation/Side-Drawer';
 import Backdrop from '../../../UIElements/Backdrop/Backdrop';
@@ -45,7 +44,7 @@ const Navigation = props => {
                     </div>
                 </button>
 
-                <nav className='navigation'>
+                <nav className={`navigation ${props.navClassName}`}>
                     <Link className='header__logo' to='/about'><Logo /></Link>
                     <NavLinks />
                 </nav>

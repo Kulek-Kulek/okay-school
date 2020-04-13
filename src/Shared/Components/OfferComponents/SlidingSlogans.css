@@ -1,0 +1,90 @@
+.sliding-slogans {
+    position: relative;
+    margin-top: 10vh;
+    height: 10vh;
+    background-color: var(--main-color);
+    overflow: hidden;
+}
+
+.sliding-slogans__single-slogan {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+    color: #fff;
+    font-family: var(--main-font);
+    letter-spacing: 2px;
+    font-size: 1.3rem;
+    width: 100%;
+    text-align: center;
+    text-transform: capitalize;
+    animation: changeSlogan 24s infinite linear both;
+}
+
+.sliding-slogans__single-slogan:nth-child(2) {
+    animation-delay: 8s;
+}
+
+.sliding-slogans__single-slogan:nth-child(3) {
+    animation-delay: 16s;
+}
+
+.sliding-slogans__icon {
+    margin-left: 5px;
+    color: var(--green-color);
+    font-size: 2rem;
+}
+
+@keyframes changeSlogan {
+    0% {
+        -webkit-transform: translate(100%, -50%);
+        transform: translate(100%, -50%);
+    }
+    3% {
+        -webkit-transform: translate(100%, -50%);
+        transform: translate(100%, -50%);
+    }
+    6% {
+        -webkit-transform: translate(0, -50%);
+        transform: translate(0, -50%);
+    }
+    30% {
+        -webkit-transform: translate(0, -50%);
+        transform: translate(0, -50%);
+    }
+    33% {
+        -webkit-transform: translate(-100%, -50%);
+        transform: translate(-100%, -50%);
+    }
+    100% {
+        -webkit-transform: translate(-100%, -50%);
+        transform: translate(-100%, -50%);
+    }
+}
+
+@media (orientation: landscape) {
+    .sliding-slogans {
+        margin-top: 22vh;
+        height: 16vh;
+    }
+    .sliding-slogans__single-slogan {
+        letter-spacing: 3px;
+        font-size: 1.7rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .sliding-slogans {
+        margin-top: 15vh;
+        height: 13vh;
+    }
+    .sliding-slogans__single-slogan {
+        letter-spacing: 5px;
+        font-size: 2.6rem;
+    }
+    .sliding-slogans__icon {
+        margin-left: 15px;
+        color: var(--green-color);
+        font-size: 3rem;
+    }
+}
