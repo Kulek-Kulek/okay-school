@@ -1,6 +1,6 @@
 
 
-const onlineLearningTypingEffect = () => {
+export const onlineLearningTypingEffect = () => {
     const wrappingDiv = document.querySelector('.learn-online__slogans')
     const slogans = ['Wow, cieszę się, że jesteś tutaj. Lubię mówić do ludzi!',
         'Jak masz na imię? Może Stanisław? Był tu taki jeden Stanisław kiedyś, spędziliśmy razem piękne wspólne chwile.', 'Niestety później żona kazała mu wrzucić węgiel do komórki. Mam nadzieję, że ty nie masz komórki :).'];
@@ -43,6 +43,3 @@ const onlineLearningTypingEffect = () => {
 
     onlineLearningTyping();
 }
-
-
-export default onlineLearningTypingEffect;

@@ -44,3 +44,15 @@
 .navigation__li:hover .navigation__link::after {
     left: 0;
 }
+
+@media (orientation: landscape) {
+    .navigation__li {
+        margin-top: 10%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .navigation__li {
+        margin-top: 0;
+    }
+}

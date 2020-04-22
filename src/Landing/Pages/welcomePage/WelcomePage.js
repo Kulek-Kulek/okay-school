@@ -3,7 +3,8 @@ import { Redirect } from 'react-router-dom';
 
 import './WelcomePage.css';
 import '../../../Shared/Components/Logo/Logo.css';
-import typing from './typing';
+import { typing } from './typing';
+
 
 
 const WelcomePage = props => {
@@ -15,6 +16,7 @@ const WelcomePage = props => {
         setTimeout(() => {
             setWelcomePageLoaded(true);
         }, 4000);
+
     }, []);
 
     return (
@@ -28,6 +30,6 @@ const WelcomePage = props => {
             {welcomePageLoaded && <Redirect to='/about' />}
         </React.Fragment>
     );
-}
+};
 
 export default WelcomePage;

@@ -97,6 +97,7 @@
 @media (min-width: 1024px) {
     .offer__choice {
         height: 75vh;
+        justify-content: space-around;
     }
     .offer__type {
         height: 80%;
@@ -105,7 +106,10 @@
     }
     .offer__type:hover {
         box-shadow: 10px 10px 15px var(--main-color);
-        transform: scale(1.01);
+        transform: scale(1.02);
+    }
+    .offer__desc-heading {
+        flex-basis: 15%;
     }
     .offer__desc-paragraph {
         flex-basis: auto;
@@ -113,16 +117,19 @@
         padding: 5% 2%;
         text-shadow: 5px 1px 0 var(--main-color);
     }
+    .offer__button-div {
+        margin-bottom: 10%;
+    }
     .offer__button {
         letter-spacing: 3px;
         font-size: 1.1rem;
-        padding: 1% 2%;
+        padding: 1.5% 0;
         transition: .5s;
     }
     .offer__button:hover {
         color: var(--main-color);
         border-color: var(--main-color);
         background-color: #fff;
-        transition: .5s;
+        transition: .3s;
     }
 }

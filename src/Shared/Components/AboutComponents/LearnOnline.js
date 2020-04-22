@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import './LearnOnline.css';
 import imgMac from '../../../images/learn-online/mac.png';
-import onlineLearningTypingEffect from './LearnOnlineScript'
+import { onlineLearningTypingEffect } from './LearnOnlineScript'
 
 
 const LearnOnline = props => {

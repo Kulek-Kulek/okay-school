@@ -7,7 +7,7 @@ let previousTime = 0;
 const speed = 100;
 let spanElement;
 
-const typing = (newTime) => {
+export const typing = (newTime) => {
     if (newTime - previousTime > speed) {
         const letter = welcomeSlogan[welcomeSloganIndex].substr(letterIndex, 1);
         if (welcomeSlogan[welcomeSloganIndex].length === letterIndex) {
@@ -47,7 +47,5 @@ const typing = (newTime) => {
         letterIndex++;
     }
     requestAnimationFrame(typing);
+};
 
-}
-
-export default typing;

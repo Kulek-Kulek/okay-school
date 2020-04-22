@@ -28,11 +28,9 @@ const AboutPage = props => {
                 <Banner />
                 <ThreeDotsBanner />
                 <OurClients />
-
             </Main>
-            {/* <Footer /> */}
         </React.Fragment>
     );
-}
+};
 
 export default AboutPage;

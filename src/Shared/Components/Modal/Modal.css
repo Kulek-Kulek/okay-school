@@ -1,0 +1,184 @@
+.pop-up-modal {
+    position: fixed;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -300%);
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+    height: 260px;
+    background-color: rgb(153, 153, 153);
+    border: 1px solid var(--green-color);
+    z-index: 1000;
+    transition: .5s;
+}
+
+.pop-up-modal--active {
+    transform: translate(-50%, -40%);
+    transition: .5s;
+}
+
+.pop-up-modal__top {
+    flex-grow: 1;
+    background-image: url('../../../images/modal/cityByNight.jpg');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+}
+
+.pop-up-modal__contact-data {
+    flex-basis: 75%;
+}
+
+.pop-up-modal__logo {
+    flex-basis: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+.pop-up-modal__contact-details {
+    height: 100%;
+    margin-left: 3%;
+}
+
+.pop-up-modal__logo-div {
+    font-size: 1.5rem;
+}
+
+.pop-up-modal__logo-pink {
+    font-size: 1.8rem;
+}
+
+.pop-up-modal__info-div:nth-child(3), .pop-up-modal__info-div:nth-child(4) {
+    margin: 1% 0;
+}
+
+.pop-up-modal__info-div:last-child {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    font-size: .75rem;
+    margin-bottom: 3%;
+}
+
+.pop-up-modal__info-span {
+    font-size: .7rem;
+}
+
+.pop-up-modal__inputs {
+    display: flex;
+    flex-direction: column;
+    height: 60%;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0 2%;
+}
+
+.pop-up-modal__input-wrapper {
+    width: 100%;
+    height: 13%;
+}
+
+.pop-up-modal__input-wrapper:last-child {
+    height: 45%;
+}
+
+.pop-up-modal__input {
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    padding: 1%;
+}
+
+.pop-up-modal__buttons {
+    flex-basis: 11%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2%;
+}
+
+.pop-up-modal__button {
+    font-size: 1rem;
+    padding: .5% 4%;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    font-family: var(--main-font);
+    letter-spacing: 1px;
+    margin-bottom: 1%;
+    color: #fff;
+    background-color: var(--main-color);
+    transition: .5s;
+}
+
+@media (orientation: landscape) {
+    .pop-up-modal {
+        height: 70vh;
+        width: 70vw;
+    }
+    .pop-up-modal__buttons {
+        flex-basis: 10%;
+    }
+    .pop-up-modal__button {
+        font-size: .7rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .pop-up-modal__top {
+        align-items: flex-end;
+    }
+    .pop-up-modal__logo-div {
+        font-size: 3.5rem;
+    }
+    .pop-up-modal__logo-pink {
+        font-size: 3.8rem;
+    }
+    .pop-up-modal__info-div:nth-child(3), .pop-up-modal__info-div:nth-child(4) {
+        margin: 2% 0 0 0;
+    }
+    .pop-up-modal__info-div:last-child {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        font-size: 1.5rem;
+        margin-bottom: 3%;
+    }
+    .pop-up-modal__info-span {
+        font-size: 1rem;
+    }
+    .pop-up-modal__inputs {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        height: 55%;
+    }
+    .pop-up-modal__input-wrapper {
+        flex-basis: 32%;
+        height: 13%;
+    }
+    .pop-up-modal__input-wrapper:last-child {
+        height: 65%;
+        flex-basis: 100%;
+    }
+    .pop-up-modal__input {
+        width: 100%;
+        height: 100%;
+        border: 1px solid var(--main-color);
+        border-radius: 5px;
+        padding: 1%;
+    }
+    .pop-up-modal__button {
+        letter-spacing: 3px;
+        font-size: 1rem;
+    }
+    .pop-up-modal__button:hover {
+        background-color: #fff;
+        color: var(--main-color);
+        border: 1px solid var(--main-color);
+        transition: .5s;
+    }
+}

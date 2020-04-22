@@ -7,7 +7,8 @@ const Button = props => {
         <button
             onClick={props.click}
             type={props.type}
-            className={`button ${props.btn}`}>
+            className={`button ${props.btn}`}
+            disabled={props.disabled}>
             {props.btnText}
             <i className={`fas fa-long-arrow-alt-right btn-arrow-right ${props.arrowClassName}`}></i>
         </button>

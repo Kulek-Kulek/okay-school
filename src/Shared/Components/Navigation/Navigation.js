@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import NavLinks from './NavLinks';
 import Logo from '../Logo/Logo';
 import SideDrawer from '../Navigation/Side-Drawer';
-import Backdrop from '../../../UIElements/Backdrop/Backdrop';
+import Backdrop from '../../Components/Backdrop/Backdrop';
 import './Navigation.css';
 
 const Navigation = props => {
@@ -45,12 +45,12 @@ const Navigation = props => {
                 </button>
 
                 <nav className={`navigation ${props.navClassName}`}>
-                    <Link className='header__logo' to='/about'><Logo /></Link>
+                    <Link className='header__logo' to='/'><Logo /></Link>
                     <NavLinks />
                 </nav>
             </>
         </React.Fragment>
     );
-}
+};
 
 export default Navigation;
