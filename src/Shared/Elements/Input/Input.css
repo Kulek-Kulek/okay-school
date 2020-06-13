@@ -1,3 +1,22 @@
+.add-data-modal__select {
+    width: 50%;
+    color: var(--main-color);
+    font-family: var(--main-font);
+}
+
 .input--invalid {
-    border: 3px solid red;
+    border: 2px solid #A10606 !important;
+}
+
+.error-text {
+    font-size: .8rem;
+    color: #A10606;
+    font-weight: bold;
+    font-family: var(--main-font);
+}
+
+@media (min-width: 1024px) {
+    .error-text {
+        font-size: .9rem;
+    }
 }

@@ -1,8 +1,20 @@
 .footer {
+    position: relative;
     display: flex;
-    height: 17vh;
-    background-color: var(--main-color);
+    height: 20vh;
+    background-color: rgba(51, 34, 34, .9);
+    /* background-color: var(--main-color); */
     /* border-top: 2px solid var(--green-color); */
+}
+
+.footer__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
 }
 
 .footer__logo {
@@ -29,7 +41,8 @@
     flex-basis: 70%;
     display: flex;
     flex-wrap: wrap;
-    padding: 2% 3% 0 0;
+    align-items: flex-end;
+    padding-right: 3%;
 }
 
 .footer__info-div {
@@ -37,6 +50,7 @@
     font-size: .75rem;
     flex-basis: 50%;
     font-family: sans-serif;
+    text-shadow: 2px 1px 0 black;
 }
 
 .footer__info-div:nth-child(3), .footer__info-div:nth-child(4) {
@@ -44,9 +58,9 @@
 }
 
 .footer__info-div-button {
-    height: 40%;
-    flex-basis: 35%;
-    border-bottom: 1px solid #fff;
+    height: 45%;
+    flex-basis: 42%;
+    /* border-bottom: 1px solid #fff; */
 }
 
 .footer__button {
@@ -58,6 +72,13 @@
     color: #fff;
     letter-spacing: 2px;
     padding: 1px;
+    text-shadow: 2px 1px 0 black;
+}
+
+.footer__info-underline {
+    width: 100%;
+    height: 1px;
+    background-color: #fff;
 }
 
 .footer__arrow {
@@ -69,14 +90,14 @@
     text-align: end;
     flex-grow: 1;
     font-family: var(--main-font);
-    font-size: .8rem;
-    padding-left: 4%;
-    border-bottom: 1px solid #fff;
+    font-size: .7rem;
+    margin-left: 4%;
+    text-shadow: 2px 1px 0 black;
 }
 
 @media (orientation: landscape) {
     .footer {
-        height: 35vh;
+        height: 40vh;
     }
     .footer__i {
         font-size: .8rem;
@@ -92,8 +113,11 @@
     .footer__info-div:nth-child(3), .footer__info-div:nth-child(4) {
         margin-top: -5px;
     }
+    .footer__info-div-button {
+        width: 100%;
+    }
     .footer__button {
-        font-size: .7rem;
+        font-size: .6rem;
         padding: 2% 3%;
     }
     .footer__arrow {
@@ -105,13 +129,12 @@
         flex-grow: 1;
         font-family: var(--main-font);
         font-size: 1rem;
-        border-bottom: 1px solid #fff;
     }
 }
 
 @media (min-width: 1024px) {
     .footer {
-        height: 30vh;
+        height: 35vh;
         /* margin-top: 10vh; */
     }
     .footer__logo-span, .footer__pink {
@@ -132,16 +155,17 @@
         margin-top: 10px;
     }
     .footer__info-div-button {
-        margin-top: 3%;
+        margin-bottom: 8%;
         flex-basis: 27%;
         border: none;
-        height: 25%;
+        height: 15%;
     }
     .footer__button {
         width: 100%;
         height: 90%;
         font-size: 1.2rem;
         padding: 0;
+        cursor: pointer;
     }
     .footer__arrow {
         display: inline-block;
@@ -160,7 +184,7 @@
         transform: scale(0);
         width: 100%;
         height: 100%;
-        line-height: 40px;
+        line-height: 30px;
         font-size: 1.3rem;
         letter-spacing: 3px;
         text-shadow: 2px 0 0 var(--main-color);

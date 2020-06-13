@@ -4,8 +4,9 @@ import React from 'react';
 import MainHeader from '../../../Shared/Components/MainHeader/MainHeader';
 import Main from '../../../Shared/Components/Main/Main';
 import Navigation from '../../../Shared/Components/Navigation/Navigation';
-import SlidingSlogans from '../../../Shared/Components/OfferComponents/SlidingSlogans';
-import Choice from '../../../Shared/Components/OfferComponents/Choice';
+import SlidingSlogans from '../../../Shared/Components/SlidingSlogan/SlidingSlogans';
+import Choice from '../../../Landing/Components/OfferComponents/Choice';
+import Footer from '../../../Shared/Components/Footer/Footer';
 import './OfferPage.css';
 
 const OfferPage = props => {
@@ -18,6 +19,7 @@ const OfferPage = props => {
             <Main mainClassName='offer__main'>
                 <Choice />
             </Main>
+            <Footer />
         </React.Fragment>
 
 

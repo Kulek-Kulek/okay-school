@@ -12,7 +12,7 @@ const Banner = props => {
                 <img src={imgHand} alt="hands" className='picture-banner__img' />
                 <div className='picture-banner__sloganButton'>
                     <h3 className='picture-banner__slogan'>Angielski z pasją</h3>
-                    <Link to='/offer' className='picture-banner__a pulse'>
+                    <Link to='/offer/general-english' className='picture-banner__a pulse'>
                         <span className="picture-banner__span">więcej<i className={`fas fa-long-arrow-alt-right btn-arrow-right--active`}></i></span>
                     </Link>
                 </div>
@@ -21,7 +21,7 @@ const Banner = props => {
                 <img src={imgBusinessmen} alt="businessPeopleWorking" className='picture-banner__img' />
                 <div className='picture-banner__sloganButton'>
                     <h3 className='picture-banner__slogan'>Angielski profesjonalnie</h3>
-                    <Link to='/offer' className='picture-banner__a pulse'>
+                    <Link to='/offer/business-english' className='picture-banner__a pulse'>
                         <span className="picture-banner__span">więcej<i className={`fas fa-long-arrow-alt-right btn-arrow-right--active`}></i></span>
                     </Link>
                 </div>

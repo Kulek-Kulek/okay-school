@@ -16,7 +16,7 @@ const NavLinks = props => {
         { name: 'home', path: '/about', exact: true },
         { name: 'oferta kursów', path: '/offer' },
         { name: 'dla partnerów', path: '/partners' },
-        // auth.isLoggedIn ? { name: 'wyloguj', path: '/about', click: auth.logout } : { name: 'zaloguj/załóż konto', path: '/auth' }
+        { name: 'admin', path: '/register/admin' }
     ];
 
 

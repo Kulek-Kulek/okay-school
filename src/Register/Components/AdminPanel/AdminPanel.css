@@ -1,0 +1,121 @@
+.admin-header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.admin-header__buttons-wrapper {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    background-color: #bbb;
+    padding: 3% 0;
+    margin-bottom: 2%;
+}
+
+.admin-header__btn-div {
+    width: 22%;
+}
+
+.admin-header__button {
+    width: 100%;
+    display: block;
+    font-family: var(--main-font);
+    font-size: .75rem;
+    color: #fff;
+    padding: 3% 8%;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.admin-header__button#students {
+    background-color: #df0e99;
+}
+
+.admin-header__button#groups {
+    background-color: orange;
+}
+
+.admin-header__button#partners {
+    background-color: green;
+}
+
+.admin-header__button#teachers {
+    background-color: blue;
+}
+
+.admin-header__button--active {
+    background-color: #fff !important;
+    color: var(--button-color);
+}
+
+.admin-header__button-add-wrapper {
+    margin: 2%;
+    width: 45%;
+}
+
+.admin-header__button-add {
+    width: 100%;
+    display: block;
+    font-family: var(--main-font);
+    font-size: .65rem;
+    color: #fff;
+    padding: 1% 2%;
+    background-color: var(--main-color);
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media (orientation: landscape) {
+    .admin-header {
+        margin-top: 20vh;
+    }
+    .admin-header__buttons-wrapper {
+        padding: 1%;
+        margin-bottom: 2%;
+    }
+    .admin-header__button {
+        font-size: .9rem;
+    }
+    .admin-header__button-add-wrapper {
+        margin: 2%;
+        width: 25%;
+    }
+}
+
+@media(min-width: 1024px) {
+    .admin-header {
+        margin-top: 13vh;
+    }
+    .admin-header__buttons-wrapper {
+        padding: 1%;
+        margin-bottom: 1%;
+    }
+    .admin-header__button {
+        font-size: 1.2rem;
+        padding: 1% 4%;
+        letter-spacing: 2px;
+        transition: .5s;
+    }
+    .admin-header__button:hover {
+        background-color: #fff;
+        color: var(--main-color);
+        transition: .5s;
+    }
+    .admin-header__button-add-wrapper {
+        margin: 1% 0 0 2.5%;
+        width: 15%;
+    }
+    .admin-header__button-add {
+        /* padding: 2%; */
+        font-size: 1rem;
+        transition: .5s;
+    }
+    .admin-header__button-add:hover {
+        background-color: #fff;
+        color: var(--main-color);
+        transition: .5s;
+    }
+}

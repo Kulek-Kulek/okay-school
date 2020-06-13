@@ -41,6 +41,10 @@
     overflow: hidden;
 }
 
+.nav__hamburger-span--form-active {
+    display: none;
+}
+
 .nav__haburger-snail {
     position: absolute;
     top: 0;

@@ -6,7 +6,7 @@ import topline from '../../../images/client-logos/topline.jpg';
 import meblosiek from '../../../images/client-logos/meblosiek.jpg';
 import pfleiderer from '../../../images/client-logos/pfleiderer.jpg';
 import wielton from '../../../images/client-logos/wielton.jpg';
-import Button from '../../Elements/Button/Button';
+import Button from '../../../Shared/Elements/Button/Button';
 
 
 const OurClients = props => {

@@ -3,7 +3,10 @@ import ReactDOM from 'react-dom';
 
 
 import Input from '../../../Shared/Elements/Input/Input';
+import Spinner from '../../Elements/LoadingSpinner/LoadingSpinner';
+import ErrorModal from '../Modal/ErrorModal';
 import { useForm } from '../../../Shared/Hooks/form-hook';
+import { useHttpClient } from '../../Hooks/http-hook';
 import {
     VALIDATOR_REQUIRE,
     VALIDATOR_EMAIL,
@@ -12,14 +15,17 @@ import {
 import Button from '../../../Shared/Elements/Button/Button';
 import './AuthModal.css';
 import { AuthContex } from '../../../Shared/Contex/auth-contex';
+import { ModalContex } from '../../../Shared/Contex/modal-contex';
+
 
 
 const Auth = props => {
 
     const [isLoginMode, setIsLoginMode] = useState(true);
+    const [errorModalActive, setErrorModalActive] = useState(false);
+    const { loading, error, sendRequest, clearError } = useHttpClient();
 
     const [formState, inputHandler, setFormData] = useForm(
-
         {
             email: {
                 value: '',
@@ -34,11 +40,48 @@ const Auth = props => {
     );
 
     const auth = useContext(AuthContex);
+    const modalActivator = useContext(ModalContex);
 
-    const authSubmitHandler = e => {
+    const authSubmitHandler = async e => {
         e.preventDefault();
-        // console.log(formState.inputs);
-        auth.login();
+        if (isLoginMode) {
+            try {
+                await sendRequest('http://localhost:5000/api/students/login',
+                    'POST',
+                    JSON.stringify({
+                        email: formState.inputs.email.value,
+                        password: formState.inputs.password.value,
+                    }),
+                    {
+                        'Content-Type': 'application/json'
+                    }
+                );
+                auth.login();
+                modalActivator.modalToggle('loginModalButton');
+            } catch (err) {
+                setErrorModalActive(true);
+            }
+        } else {
+            try {
+                await sendRequest('http://localhost:5000/api/students/signup',
+                    'POST',
+                    JSON.stringify({
+                        name: formState.inputs.name.value,
+                        surname: formState.inputs.surname.value,
+                        email: formState.inputs.email.value,
+                        password: formState.inputs.password.value,
+                        mobile: formState.inputs.tel.value
+                    }),
+                    {
+                        'Content-Type': 'application/json'
+                    }
+                );
+                auth.login();
+                modalActivator.modalToggle('loginModalButton');
+            } catch (err) {
+                setErrorModalActive(true);
+            }
+        }
     };
 
     const switchButtonModeHandler = () => {
@@ -72,6 +115,11 @@ const Auth = props => {
         setIsLoginMode(prevState => !prevState);
     };
 
+    const errorModalCancelHandler = () => {
+        setErrorModalActive(false);
+        clearError();
+    }
+
     const signupInputs = (
         <React.Fragment>
             <Input
@@ -79,71 +127,91 @@ const Auth = props => {
                 type='text'
                 placeholder='Jak masz na imię?'
                 id='name'
-                label='Twoje imię'
                 errorText='Podaj swoje imię.'
                 validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(3)]}
                 onInput={inputHandler}
+                inputWrapperClass='auth-modal__input-wrapper'
                 classInput='auth-modal__input' />
             <Input
                 input='input'
                 type='text'
                 placeholder='Jak się nazywasz?'
                 id='surname'
-                label='Twóje nazwisko.'
                 errorText='Podaj swoje nazwisko.'
                 validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(3)]}
                 onInput={inputHandler}
+                inputWrapperClass='auth-modal__input-wrapper'
                 classInput='auth-modal__input' />
             <Input
                 input='input'
                 type='tel'
                 placeholder='Podaj telefon kontaktowy.'
                 id='tel'
-                label='Telefon do kontaktu.'
                 errorText='Wprowadź poprawny numer telefonu.'
                 validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(6)]}
                 onInput={inputHandler}
+                inputWrapperClass='auth-modal__input-wrapper'
                 classInput='auth-modal__input' />
         </React.Fragment>
     );
 
+    const authModalClasses = ['auth-modal', 'auth-modal--active'];
+
     const portalContent = (
         <React.Fragment>
-            <div className='auth-modal'>
-                <form onSubmit={authSubmitHandler} className='auth-modal__form'>
-                    {!isLoginMode && signupInputs}
-                    <Input
-                        input='input'
-                        type='email'
-                        placeholder='Twój email'
-                        id='email'
-                        label='Twój email'
-                        errorText='Wprowadź poprawny adres email.'
-                        validators={[VALIDATOR_REQUIRE(), VALIDATOR_EMAIL()]}
-                        onInput={inputHandler}
-                        classInput='auth-modal__input' />
-                    <Input
-                        input='input'
-                        type='password'
-                        placeholder='Twoje hasło'
-                        id='password'
-                        label='Twóje hasło'
-                        errorText='Wprowadź poprawne hasło.'
-                        validators={[VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH(5)]}
-                        onInput={inputHandler}
-                        classInput='auth-modal__input' />
-                    <Button
-                        type='submit'
-                        btnText={isLoginMode ? 'Zaloguj' : 'Załóż konto'}
-                        disabled={!formState.isValid}
-                        btn='auth-modal__button' />
-                </form>
-                <Button
-                    type='text'
-                    btnText={isLoginMode ? 'Załóż konto' : 'Zaloguj'}
-                    click={switchButtonModeHandler}
-                    btn='auth-modal__button' />
-                <a href='/' className='auth-modal__a'>Nie pamiętam hasła</a>
+            <div className={!modalActivator.authModalActive ? 'auth-modal' : authModalClasses.join(' ')} >
+                <ErrorModal
+                    class={errorModalActive && ['error-modal--active', 'error-modal-auth'].join(' ')}
+                    errorMessage={error}
+                    errorHeaderMessage='Błąd logowania.'
+                    btnText='Zamknij'
+                    click={errorModalCancelHandler} />
+                {loading ? < Spinner /> : (
+                    <div className={errorModalActive ? 'auth-modal-invisible' : undefined}>
+                        <span className='auth-modal__info-span'>Zaloguj się do serwisu, lub załóż konto.</span>
+                        <i className="fa fa-times-circle auth-modal__cancel-icon" aria-hidden="true" onClick={() => modalActivator.modalToggle('loginModalButton')}></i>
+                        <form onSubmit={authSubmitHandler} className='auth-modal__form'>
+                            {!isLoginMode && signupInputs}
+                            <Input
+                                input='input'
+                                type='email'
+                                placeholder='Twój email'
+                                id='email'
+                                errorText='Wprowadź poprawny adres email.'
+                                validators={[VALIDATOR_REQUIRE(), VALIDATOR_EMAIL()]}
+                                onInput={inputHandler}
+                                inputWrapperClass='auth-modal__input-wrapper'
+                                classInput='auth-modal__input' />
+                            <Input
+                                input='input'
+                                type='password'
+                                placeholder='Twoje hasło'
+                                id='password'
+                                errorText='Wprowadź poprawne hasło.'
+                                validators={[VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH(5)]}
+                                onInput={inputHandler}
+                                inputWrapperClass='auth-modal__input-wrapper'
+                                classInput='auth-modal__input' />
+                            <Button
+                                type='submit'
+                                btnText={isLoginMode ? 'Zaloguj' : 'Załóż konto'}
+                                disabled={!formState.isValid}
+                                btn={isLoginMode ? 'auth-modal__login-button' : 'auth-modal__signup-button'}
+                                arrowClassName='btn-arrow-right--active'
+                            />
+                        </form>
+                        <div className='auth-modal__helper'>
+                            <span className='auth-modal__or'>lub</span>
+                            <Button
+                                type='text'
+                                btnText={isLoginMode ? 'Załóż konto' : 'Zaloguj'}
+                                click={switchButtonModeHandler}
+                                btn={isLoginMode ? 'auth-modal__signup-button' : 'auth-modal__login-button'}
+                                arrowClassName='btn-arrow-right--active' />
+                            <a href='/' className='auth-modal__a'>Nie pamiętam hasła</a>
+                        </div>
+                    </div>
+                )}
             </div>
         </React.Fragment>
     );

@@ -40,6 +40,10 @@
     margin-bottom: 5%;
 }
 
+.offer-a {
+    width: 80%;
+}
+
 .offer__button {
     background-color: var(--main-color);
     border: 1px solid #fff;
@@ -49,7 +53,7 @@
     text-transform: capitalize;
     padding: 2% 4%;
     font-size: 1rem;
-    width: 80%;
+    width: 100%;
     cursor: pointer;
 }
 
@@ -131,5 +135,8 @@
         border-color: var(--main-color);
         background-color: #fff;
         transition: .3s;
+    }
+    .offer__button:hover .btn-arrow-right--active {
+        animation-play-state: paused;
     }
 }

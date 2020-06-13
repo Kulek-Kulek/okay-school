@@ -4,12 +4,13 @@ import Main from '../../../Shared/Components/Main/Main';
 import MainHeader from '../../../Shared/Components/MainHeader/MainHeader';
 import Navigation from '../../../Shared/Components/Navigation/Navigation';
 import Carousel from '../../../Shared/Components/Carousel/Carousel';
-import LearnOnline from '../../../Shared/Components/AboutComponents/LearnOnline';
-import OfferDescriptions from '../../../Shared/Components/AboutComponents/OfferDescriptions';
-import Banner from '../../../Shared/Components/AboutComponents/Banner';
-import ThreeDotsBanner from '../../../Shared/Components/AboutComponents/ThreeDotsBanner';
-import OurClients from '../../../Shared/Components/AboutComponents/OurClients';
-import Globe from '../../../Shared/Components/AboutComponents/Globe';
+import LearnOnline from '../../Components/AboutComponents/LearnOnline';
+import OfferDescriptions from '../../Components/AboutComponents/OfferDescriptions';
+import Banner from '../../Components/AboutComponents/Banner';
+import ThreeDotsBanner from '../../Components/AboutComponents/ThreeDotsBanner';
+import OurClients from '../../Components/AboutComponents/OurClients';
+import Globe from '../../Components/AboutComponents/Globe';
+import Footer from '../../../Shared/Components/Footer/Footer';
 
 
 
@@ -29,6 +30,7 @@ const AboutPage = props => {
                 <ThreeDotsBanner />
                 <OurClients />
             </Main>
+            <Footer />
         </React.Fragment>
     );
 };

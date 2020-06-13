@@ -5,6 +5,7 @@
     height: 100%;
     align-items: center;
     justify-content: space-evenly;
+    z-index: 1000;
 }
 
 .navigation__list-button {
@@ -44,5 +45,9 @@
         color: var(--main-font);
         background-color: transparent;
         font-weight: bold;
+        cursor: pointer;
+    }
+    .navigation__list-button:hover .btn-arrow-right--active {
+        animation-play-state: paused;
     }
 }

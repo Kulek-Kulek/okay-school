@@ -7,6 +7,7 @@ import Button from '../../Elements/Button/Button';
 import ContactModal from '../Modal/ContactModal';
 import BackDrop from '../Backdrop/Backdrop';
 import { ModalContex } from '../../Contex/modal-contex';
+import videoSrc from '../../../videos/video.mp4';
 
 
 const Footer = props => {
@@ -14,9 +15,17 @@ const Footer = props => {
 
     return (
         <React.Fragment>
-            {modalActivator.contactModalActive && <BackDrop click={modalActivator.modalToggle} />}
+            {modalActivator.contactModalActive && <BackDrop click={() => modalActivator.modalToggle('contactModalButton')} />}
             <ContactModal />
             <footer className='footer'>
+                <video className='footer__video'
+                    src={videoSrc}
+                    playsInline
+                    autoPlay
+                    muted
+                    loop
+                    poster={props.videoPosterSrc}>
+                </video>
                 <div className='footer__logo'>
                     <Logo
                         logo='footer__logo-span'
@@ -51,7 +60,10 @@ const Footer = props => {
                             click={() => modalActivator.modalToggle('contactModalButton')}
                         />
                     </div>
-                    <div className='footer__info-div'>Przyjemność z uczenia się</div>
+                    <div className='footer__info-div'>
+                        Przyjemność uczenia się
+                        <div className='footer__info-underline'></div>
+                    </div>
                 </div>
             </footer>
         </React.Fragment>

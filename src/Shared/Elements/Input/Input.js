@@ -48,30 +48,47 @@ const Input = props => {
         dispatch({ type: 'TOUCH' })
     }
 
-    const element = props.input === 'input' ?
-        (<input
-            id={props.id}
-            type={props.type}
-            placeholder={props.placeholder}
-            value={inputCurrentState.value}
-            onChange={inputChangeHandler}
-            onBlur={touchHandler}
-            className={`${props.classInput} ${!inputCurrentState.isValid && inputCurrentState.isTouched && 'input--invalid'}`} />) :
-        (<textarea
+    let inputType;
+
+    switch (props.input) {
+        case 'input':
+            inputType = <input
+                id={props.id}
+                type={props.type}
+                placeholder={props.placeholder}
+                value={inputCurrentState.value}
+                onChange={inputChangeHandler}
+                onBlur={touchHandler}
+                className={`${props.classInput} ${!inputCurrentState.isValid && inputCurrentState.isTouched && 'input--invalid'}`} />
+            break;
+        case 'select':
+            inputType = <select onChange={inputChangeHandler} className={props.classSelect} >
+                <option defaultValue>Wybierz grupę</option>
+                {props.options ? props.options.map(option =>
+                    <option
+                        key={option.id}
+                        value={option.id}
+                        className={props.classOption}>
+                        {option.name}
+                    </option>) : <option>Brak danych</option>}
+            </select>
+            break;
+        default: inputType = <textarea
             id={props.id}
             rows={props.rows || 4}
             value={inputCurrentState.value}
             placeholder={props.placeholder}
             onChange={inputChangeHandler}
             onBlur={touchHandler}
-            className={`${props.classInput} ${!inputCurrentState.isValid && inputCurrentState.isTouched && 'input--invalid'}`} />);
+            className={`${props.classInput} ${!inputCurrentState.isValid && inputCurrentState.isTouched && 'input--invalid'}`} />
+    }
 
 
     return (
         <div className={`input-wrapper ${props.inputWrapperClass}`}>
             <label htmlFor={props.id}>{props.label}</label>
-            {element}
-            {!inputCurrentState.isValid && inputCurrentState.isTouched && <p>{props.errorText}</p>}
+            {inputType}
+            {!inputCurrentState.isValid && inputCurrentState.isTouched && <p className='error-text'>{props.errorText}</p>}
         </div>
     );
 };

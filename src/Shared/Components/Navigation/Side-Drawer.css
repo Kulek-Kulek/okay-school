@@ -8,13 +8,13 @@
   width: 70%;
   box-shadow: 1px 3px 6px rgba(51, 34, 34, 0.6);
   border-bottom-right-radius: 10px;
-  z-index: 1000;
-  transition: .5s linear;
+  z-index: 100;
+  transition: .2s linear;
 }
 
 .side__drawer--active {
   transform: translate(0, 0);
-  transition: .5s linear;
+  transition: .2s linear;
 }
 
 @media (orientation: landscape) {

@@ -2,7 +2,7 @@ import React from 'react';
 
 import imgGlobe from '../../../images/globe/globe.png';
 import './Globe.css';
-import Button from '../../Elements/Button/Button';
+import Button from '../../../Shared/Elements/Button/Button';
 
 
 const Globe = props => {

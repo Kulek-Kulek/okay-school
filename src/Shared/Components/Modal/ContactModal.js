@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import ReactDOM from 'react-dom';
 
 
-import './Modal.css';
 import Input from '../../Elements/Input/Input';
 import { useForm } from '../../Hooks/form-hook';
 import {
@@ -13,7 +12,7 @@ import {
 import Button from '../../Elements/Button/Button';
 import { ModalContex } from '../../Contex/modal-contex';
 import Logo from '../Logo/Logo';
-
+import './ContactModal.css';
 
 const ContactModal = props => {
 
@@ -70,10 +69,12 @@ const ContactModal = props => {
                             <i className="far fa-lightbulb footer__i"></i>
                             <span className='footer__info-span pop-up-modal__info-span'>Sprawy pilne: 24/7</span>
                         </div>
-                        <div className='footer__info-div pop-up-modal__info-div'>Przyjemność z uczenia się</div>
+                        <div className='footer__info-div pop-up-modal__info-div'>
+                            Przyjemność z uczenia się
+                            <div className='pop-up-modal__underline'></div>
+                        </div>
                     </div>
                 </div>
-
             </div>
             <div className='pop-up-modal__inputs'>
                 <Input
