@@ -1,35 +1,48 @@
 .error-modal {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     flex-direction: column;
     justify-content: center;
     display: none;
-    width: 90%;
-    height: 18vh;
+    width: 95%;
     margin: 0 auto;
-    padding: .5% 2%;
-    border: 1px solid var(--main-color);
+    padding: 2%;
+    border: 1px solid var(--green-color);
+    background-color: #fff;
     margin-top: 3%;
+    z-index: 500;
 }
 
 .error-modal--active {
     display: flex;
 }
 
-.error-modal__header {
+.error-modal__header, .error-modal__header-ok {
     display: flex;
     align-items: center;
     justify-content: center;
     color: #fff;
     font-family: var(--main-font);
     letter-spacing: 3px;
+    padding: 1% 2%;
     text-transform: uppercase;
     flex-grow: 1;
+    text-align: center;
     background-color: #A10606;
+    border: 1px solid var(--main-color);
+}
+
+.error-modal__header-ok {
+    background-color: var(--green-color);
 }
 
 .error-modal__message {
     padding: 5px;
     flex-basis: 50%;
     background-color: #fff;
+    border: 1px solid var(--main-color);
 }
 
 .error-modal__button {
@@ -55,7 +68,7 @@
 
 @media(orientation: landscape) {
     .error-modal {
-        width: 70%;
+        width: 85%;
         height: 40vh;
         margin-top: 1%;
     }
@@ -63,8 +76,8 @@
 
 @media(min-width: 1024px) {
     .error-modal {
-        width: 50%;
-        height: 20vh;
+        width: 60%;
+        padding: .5% 1%;
         margin-top: auto;
     }
     .error-modal-auth {

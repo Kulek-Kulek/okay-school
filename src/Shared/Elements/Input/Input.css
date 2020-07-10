@@ -5,18 +5,12 @@
 }
 
 .input--invalid {
-    border: 2px solid #A10606 !important;
+    border: 2px solid red !important;
 }
 
 .error-text {
-    font-size: .8rem;
+    font-size: .7rem;
     color: #A10606;
     font-weight: bold;
     font-family: var(--main-font);
-}
-
-@media (min-width: 1024px) {
-    .error-text {
-        font-size: .9rem;
-    }
 }

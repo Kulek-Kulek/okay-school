@@ -1,10 +1,14 @@
 import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
-import Button from '../../../../Shared/Elements/Button/Button';
+import LinkElement from '../../../../Shared/Elements/LinkElement/LinkElement';
+import * as actions from '../../../../store/actions/index';
 import './SingleCourse.css';
 
 
 const SingleCourse = props => {
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         let index = 0;
@@ -32,14 +36,17 @@ const SingleCourse = props => {
         }
     }, []);
 
-
-
     const advantages = props.advantages.map(advg => (
         <div key={advg} className={`course__advantages ${props.class + '__advantages'}`} >
             <i className={`fas fa-check-double course__i ${props.class + '__i'}`} ></i>
             <span className={`course__single-advg ${props.class + '__single-advg'}`}>{advg}</span>
         </ div>
     ));
+
+
+    const courseChosenHandler = () => {
+        dispatch(actions.addCourseToBasket(props.title, props.price));
+    }
 
     return (
         <div className={`course ${props.class} `}>
@@ -51,13 +58,18 @@ const SingleCourse = props => {
                 <p className={`course__desc ${props.class + '__desc'}`}>{props.desc}</p>
                 {advantages}
                 <p className={`course__terms ${props.class + '__terms'}`}>{props.terms}</p>
-                <span className={`course__price ${props.class + '__price'}`}>Cena całego kursu: {props.price} PLN</span>
-                < Button
+                <span className={`course__price ${props.class + '__price'}`}>Cena całego kursu: {props.price} {props.class === 'learn-abroad' ? 'GBP' : 'PLN'}</span>
+                <LinkElement
+                    to='/basket'
+                    className='course__a'
                     type='text'
+                    name={props.title}
+                    id={props.title}
                     btnText='dodaj do koszyka'
-                    // click={switchButtonModeHandler}
                     btn='course-button'
-                    arrowClassName='btn-arrow-right--active' />
+                    arrowClassName='btn-arrow-right--active'
+                    click={courseChosenHandler}
+                />
             </div>
             <div className={`course__img-wrapper ${props.class + '__img-wrapper'}`}></div>
         </div >

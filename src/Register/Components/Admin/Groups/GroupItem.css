@@ -3,7 +3,7 @@
     margin-bottom: 1%;
 }
 
-.admin-main__info-div {
+.admin-main__info-group-div {
     display: flex;
     flex-direction: column;
 }
@@ -16,13 +16,13 @@
     font-size: .5rem;
 }
 
-.admin-main__content {
+.admin-main__group-content {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
 }
 
-.admin-main__i-student-wrapper {
+.admin-main__i-wrapper {
     align-self: flex-end;
     margin-top: 3%;
     width: 40%;
@@ -31,18 +31,13 @@
     font-size: .8rem;
 }
 
-.admin-main__student-i {
+.admin-main__i {
     color: var(--main-color);
-    cursor: pointer;
 }
 
-/* .admin-main__student-i:nth-child(2) {
-    color: var(--green-color);
-}
-
-.admin-main__student-i:last-child {
+.admin-main__i:nth-child(2) {
     color: red;
-} */
+}
 
 @media(orientation: landscape) {
     .admin-main__item {
@@ -58,7 +53,7 @@
 
 @media(min-width: 1024px) {
     .admin-main__item {
-        flex-basis: 31%;
+        flex-basis: 22%;
     }
     .admin-main__h2 {
         font-size: 1.1rem;
@@ -66,28 +61,25 @@
     .admin-main__h5 {
         font-size: .75rem;
     }
-    .admin-main__i-student-wrapper {
-        width: 20%;
+    .admin-main__i-wrapper {
+        width: 15%;
         font-size: 1rem;
-        /* background-color: red; */
     }
-    .admin-main__student-i {
+    .admin-main__i {
         transform: translateX(150px);
     }
-    .admin-main__item:hover .admin-main__student-i {
+    .admin-main__item:hover .admin-main__i {
         transform: translateX(0);
         transition: .5s;
     }
-    .admin-main__item:hover .admin-main__student-i:nth-child(2) {
+    .admin-main__item:hover .admin-main__i:nth-child(2) {
         transition-delay: .1s;
     }
-    .admin-main__student-i:first-child:hover {
-        color: orange;
-    }
-    .admin-main__student-i:nth-child(2):hover {
+    .admin-main__i:hover {
         color: var(--green-color);
+        cursor: pointer;
     }
-    .admin-main__student-i:last-child:hover {
-        color: red;
+    .admin-main__i:nth-child(2):hover {
+        color: #A10606;
     }
 }

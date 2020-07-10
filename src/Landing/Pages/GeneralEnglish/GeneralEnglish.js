@@ -7,7 +7,7 @@ import './GeneralEnglish.css';
 
 const GeneralEnglish = props => {
 
-    let location = useLocation();
+    const location = useLocation();
 
     return (
         <React.Fragment>

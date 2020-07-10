@@ -17,6 +17,8 @@ const Courses = props => {
     const { loading, sendRequest, error, clearError } = useHttpClient();
     const [errorModalActive, setErrorModalActive] = useState(false);
 
+
+
     useEffect(() => {
         const fetchCourses = async () => {
             try {
@@ -58,7 +60,11 @@ const Courses = props => {
             </MainHeader>
             <Main>
                 <section className='courses-section'>
-                    {loading ? <Spinner /> : (!errorModalActive ? courses :
+                    {loading ? <Spinner /> : (!errorModalActive ?
+                        <React.Fragment>
+                            {courses}
+                        </React.Fragment>
+                        :
                         <ErrorModal
                             class='error-modal--active'
                             errorMessage={error}
@@ -66,7 +72,8 @@ const Courses = props => {
                             click={errorModalCancelHandler} />)}
                 </section>
             </Main>
-            {!loading && loadedCourses && <Footer />}
+            {!loading && loadedCourses &&
+                <Footer />}
         </React.Fragment>
     );
 }

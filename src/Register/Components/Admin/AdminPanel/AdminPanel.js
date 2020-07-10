@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { colorChanger } from './colorChanger';
-import Button from '../../../Shared/Elements/Button/Button';
-import DataAdminModal from '../../../Shared/Components/Modal/DataAdminModal';
+// import { useHttpClient } from '../../../Shared/Hooks/http-hook';
+import Button from '../../../../Shared/Elements/Button/Button';
+import * as actions from '../../../../store/actions/index';
 import './AdminPanel.css';
 
 
@@ -15,20 +17,33 @@ const buttonsTypes = [
 
 const AdminPanel = props => {
 
+    const dispatch = useDispatch();
 
-    const [infoTypeButton, setInfoTypeButton] = useState('students');
-    const [openAddDataModal, setOpenAddDataModal] = useState();
+    const adminData = useSelector(state => state.adminData);
+
+    // const { loading, sendRequest, error, clearError } = useHttpClient();
+
+    const [infoType, setInfoType] = useState();
+
 
     useEffect(() => {
         document.querySelector('.admin-header__button').classList.add('admin-header__button--active');
-    }, [])
+    }, []);
 
-    const sendInfoTypeHandler = (e) => {
+    const loadDataHandler = async (e) => {
         const infoType = e.target.id;
-        props.infoTypeHandler(infoType);
         colorChanger(infoType);
-        setInfoTypeButton(infoType);
-        document.querySelector('.add-data-modal').classList.remove('add-data-modal--active');
+        // dispatch(actions.infoTypeChange(infoType));
+        dispatch(actions.fetchData(infoType))
+        dispatch(actions.loading());
+        setInfoType(infoType);
+        // try {
+        //     const responseData = await sendRequest(`http://localhost:5000/api/${infoType}`);
+        //     dispatch(actions.loadAdminData(responseData[infoType], loading, error));
+        // } catch (err) {
+        //     setErrorModalActive(true);
+        // }
+
     }
 
     const buttons = buttonsTypes.map(button => (
@@ -37,16 +52,18 @@ const AdminPanel = props => {
                 btnText={button.name}
                 btn='admin-header__button'
                 id={button.id}
-                click={sendInfoTypeHandler}
+                click={loadDataHandler}
             />
         </div>
     ));
 
     let buttonText;
-    switch (infoTypeButton) {
-        case 'students': buttonText = 'dodaj nowego ucznia';
+    switch (adminData.infoType) {
+        case 'students':
+            buttonText = 'dodaj nowego ucznia';
             break;
-        case 'groups': buttonText = 'dodaj nową grupę';
+        case 'groups':
+            buttonText = 'dodaj nową grupę';
             break;
         case 'partners': buttonText = 'dodaj nowego partnera';
             break;
@@ -55,10 +72,9 @@ const AdminPanel = props => {
         default: buttonText = 'dodaj nowego ucznia';
     }
 
-    const addButtonHandler = (e) => {
-        setOpenAddDataModal(e.target.id);
-        const form = document.querySelector('.add-data-modal');
-        form.classList.add('add-data-modal--active');
+    const addButtonHandler = async (e) => {
+        dispatch(actions.toggleDataAdminModal('dataAdminModal'));
+        dispatch(actions.infoTypeChange(infoType || 'students'));
     }
 
     return (
@@ -68,16 +84,12 @@ const AdminPanel = props => {
             </div>
             <div className='admin-header__button-add-wrapper'>
                 <Button
-                    id={infoTypeButton}
+                    id={adminData.infoType}
                     btnText={buttonText}
                     btn='admin-header__button-add'
                     click={addButtonHandler}
                 />
             </div>
-            <DataAdminModal
-                infoType={openAddDataModal}
-                btnTextContent={buttonText}
-                dataLoaded={props.dataLoaded} />
         </React.Fragment>
     );
 }

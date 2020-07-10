@@ -8,7 +8,8 @@ const LinkElement = props => {
     return (
         <Link
             to={props.to}
-            className={props.className}>
+            className={props.className}
+            onClick={props.click}>
             <Button
                 btn={props.btn}
                 btnText={props.btnText}

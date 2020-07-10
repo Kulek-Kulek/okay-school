@@ -1,22 +1,27 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 
 
 import './Footer.css';
 import Logo from '../Logo/Logo';
 import Button from '../../Elements/Button/Button';
 import ContactModal from '../Modal/ContactModal';
-import BackDrop from '../Backdrop/Backdrop';
-import { ModalContex } from '../../Contex/modal-contex';
 import videoSrc from '../../../videos/video.mp4';
+import * as actionTypes from '../../../store/actions/actionTypes';
 
 
 const Footer = props => {
-    const modalActivator = useContext(ModalContex);
+
+    const dispatch = useDispatch();
+
+    const sendMessageButtonHandler = () => {
+
+        dispatch({ type: actionTypes.TOGGLE_CONTACT_MODAL, modalName: 'contactModal' })
+    }
 
     return (
         <React.Fragment>
-            {modalActivator.contactModalActive && <BackDrop click={() => modalActivator.modalToggle('contactModalButton')} />}
-            <ContactModal />
+            <ContactModal infoType='contact' />
             <footer className='footer'>
                 <video className='footer__video'
                     src={videoSrc}
@@ -57,7 +62,7 @@ const Footer = props => {
                             btnText='wyślij wiadomość'
                             btn={`footer__button pulse`}
                             arrowClassName='footer__arrow btn-arrow-right--active'
-                            click={() => modalActivator.modalToggle('contactModalButton')}
+                            click={sendMessageButtonHandler}
                         />
                     </div>
                     <div className='footer__info-div'>
@@ -69,5 +74,6 @@ const Footer = props => {
         </React.Fragment>
     );
 };
+
 
 export default Footer;

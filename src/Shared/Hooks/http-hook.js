@@ -3,6 +3,7 @@ import { useState, useCallback, useRef, useEffect } from 'react';
 export const useHttpClient = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState();
+    const [status, setStatus] = useState();
 
     const activeHttpRequest = useRef([]);
 
@@ -27,6 +28,7 @@ export const useHttpClient = () => {
                 throw new Error(responseData.message);
             }
             setLoading(false);
+            setStatus(response.ok);
             return responseData;
         } catch (err) {
             setError(err.message);
@@ -42,5 +44,5 @@ export const useHttpClient = () => {
             activeHttpRequest.current.forEach(abortCtr => abortCtr.abort());
         }
     }, []);
-    return { error, loading, sendRequest, clearError };
+    return { error, loading, status, sendRequest, clearError };
 }

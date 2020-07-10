@@ -1,0 +1,276 @@
+.main-basket {
+    margin-top: 12vh;
+    display: flex;
+    justify-content: center;
+}
+
+.basket {
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+    border: 2px solid var(--green-color);
+    border-left: 1px solid var(--green-color);
+    border-right: 1px solid var(--green-color);
+}
+
+.basket__heading {
+    display: flex;
+    width: 100%;
+    background-image: url('../../../images/modal/red-pens.jpg');
+    background-position: center 60%;
+    background-size: cover;
+    border: 1px solid var(--green-color);
+}
+
+.basket__logo {
+    flex-basis: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.basket__logo-div {
+    font-size: 1.5rem;
+}
+
+.basket__logo-pink {
+    font-size: 1.8rem;
+}
+
+.basket__course {
+    flex-grow: 1;
+}
+
+.basket__course {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+}
+
+.basket__course-type-chosen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 0 5% 20%;
+    font-size: .4rem;
+    background-color: rgba(0, 0, 0, .4);
+    border-radius: 10px;
+    letter-spacing: 1px;
+    padding: 2% 5%;
+    font-family: var(--main-font);
+    text-shadow: 1px 1px black;
+}
+
+.basket__course-name {
+    font-size: .45rem;
+    margin-bottom: 1%;
+}
+
+.basket__course-price {
+    display: flex;
+    flex-direction: column;
+}
+
+.basket__slogan {
+    align-self: flex-end;
+    margin-right: 3%;
+    font-size: .85rem;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 0 black;
+}
+
+.basket__underline {
+    height: 1px;
+    width: 100%;
+    margin: 1% 0 3% 0;
+    background-color: #fff;
+}
+
+.basket__form-wrapper {
+    background-color: #ddd;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.basket__form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.basket__input-orders-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2%;
+    padding: 1% 1.5%;
+}
+
+.basket__input-order-wrapper {
+    flex-basis: 49%;
+    margin-bottom: 1%;
+}
+
+.basket__input-order {
+    display: flex;
+    width: 100%;
+    border: 1px solid var(--main-color);
+    border-radius: 3px;
+    padding: 1% 2%;
+    font-size: 1rem;
+}
+
+.basket__input-order-select {
+    font-size: .6rem;
+}
+
+.basket__input-order-wrapper-textarea, .basket__input-order-wrapper-checkbox {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.basket__input-order-label {
+    font-size: .6rem;
+    flex-basis: 95%;
+    text-align: justify;
+    padding: 0 2%;
+}
+
+.basket__input-order-checkbox {
+    flex-grow: 1;
+    order: -1;
+}
+
+.basket__input-order-option {
+    font-size: .7rem;
+}
+
+.basket__error-text {
+    font-size: .5rem;
+}
+
+.basket__weekdaysHeading {
+    text-align: center;
+    margin: 1% 0;
+    font-size: .7rem;
+    background-color: rgb(83, 81, 81);
+    color: #fff;
+    padding: 2% 0;
+}
+
+.basket__button-wrapper {
+    margin: 2% 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1%;
+}
+
+.basket__button {
+    width: 45%;
+    font-size: .7rem;
+    padding: 1px 10px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    background-color: var(--main-color);
+    color: #fff;
+    letter-spacing: 3px;
+    font-family: var(--main-font);
+    cursor: pointer;
+}
+
+.basket__button:disabled, .basket__button:disabled:hover {
+    background-color: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    cursor: auto;
+    width: 30%;
+    font-size: .5rem;
+}
+
+.basket__button:first-child {
+    background-color: #A10606;
+    width: 25%;
+}
+
+@media (orientation:landscape) {
+    .main-basket {
+        margin-top: 20vh;
+        margin-bottom: 20px;
+    }
+    .basket__button {
+        padding: 1%;
+    }
+    .basket__button:first-child {
+        width: 20%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .main-basket {
+        margin-top: 15vh;
+        margin-bottom: 50px;
+    }
+    .basket__logo-div {
+        font-size: 4.5rem;
+    }
+    .basket__logo-pink {
+        font-size: 5rem;
+    }
+    .basket__course-type-chosen {
+        font-size: 1.1rem;
+    }
+    .basket__course-name {
+        font-size: 1.2rem;
+    }
+    .basket__slogan {
+        margin-right: 2%;
+        font-size: 1.7rem;
+        letter-spacing: 5px;
+    }
+    .basket__underline {
+        height: 2px;
+        margin: 1% 0;
+        margin-right: 2%;
+    }
+    .basket__input-order-wrapper:nth-child(3), .basket__input-order-wrapper:nth-child(4), .basket__input-order-wrapper:nth-child(5), .basket__input-order-wrapper:nth-child(6) {
+        flex-basis: 23.5%;
+        font-size: 1rem;
+    }
+    .basket__input-order-select {
+        font-size: 1rem;
+    }
+    .basket__error-text {
+        font-size: .7rem;
+    }
+    .basket__input-order-label {
+        font-size: .8rem;
+        flex-basis: 99%;
+        padding: 0 .5%;
+    }
+    .basket__weekdaysHeading {
+        font-size: 1.1rem;
+        letter-spacing: 2px;
+        text-shadow: 1px 1px 0 black;
+    }
+    .basket__button {
+        width: 40%;
+        font-size: 1rem;
+        transition: .3s;
+    }
+    .basket__button:first-child {
+        width: 15%;
+    }
+    .basket__button:hover {
+        background-color: #fff;
+        color: var(--main-color);
+        border: 1px solid var(--main-color);
+        transition: .3s;
+    }
+    .basket__button:first-child:hover {
+        border: 1px solid #A10606;
+    }
+}

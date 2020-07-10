@@ -1,42 +1,54 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Logo from '../Logo/Logo';
 import Input from '../../Elements/Input/Input';
 import Spinner from '../../Elements/LoadingSpinner/LoadingSpinner';
 import ErrorModal from '../Modal/ErrorModal';
+import WeekdaysCheckbox from '../../Components/WeekdaysCheckbox/WeekdaysCheckbox'
 import { useForm } from '../../Hooks/form-hook';
 import { dataType } from '../../../Utility/dataModalData';
 import { useHttpClient } from '../../Hooks/http-hook';
-import './DataAdminModal.css';
 import Button from '../../Elements/Button/Button';
+import * as actions from '../../../store/actions/index';
+import './DataAdminModal.css';
 
 
 const DataAdminModal = props => {
 
-    const [errorModalActive, setErrorModalActive] = useState(false);
+    const dispatch = useDispatch();
 
-    const [select, setSelect] = useState('Brak danych');
+    const addAdminModal = useSelector(state => state.modal.addAdminModal);
+    const adminData = useSelector(state => state.adminData);
+    const selectGroups = useSelector(state => state.groups)
+
+    const [errorModalActive, setErrorModalActive] = useState(false);
 
     const { loading, error, sendRequest, clearError } = useHttpClient();
 
+    const [weekDays, setWeekDays] = useState();
+
+    const [newDataAdded, setNewDataAdded] = useState();
+
+
     const [formState, inputHandler, setFormData] = useForm({
-        name: {
+        studentName: {
             value: '',
             isValid: false
         },
-        surname: {
+        studentSurname: {
             value: '',
             isValid: false
         },
-        email: {
+        studentEmail: {
             value: '',
             isValid: false
         },
-        password: {
+        studentPassword: {
             value: '',
             isValid: false
         },
-        mobile: {
+        studentMobile: {
             value: '',
             isValid: false
         }
@@ -44,131 +56,216 @@ const DataAdminModal = props => {
         false
     );
 
+    useEffect(() => {
+        switch (adminData.infoType) {
+            case 'groups':
+                setFormData({
+                    groupName: {
+                        value: '',
+                        isValid: false
+                    },
+                    lessonLength: {
+                        value: '',
+                        isValid: false
+                    },
+                    courseLength: {
+                        value: '',
+                        isValid: false
+                    }
+                }, false);
+                break;
+            case 'teachers':
+                setFormData({
+                    teacherName: {
+                        value: '',
+                        isValid: false
+                    },
+                    teacherSurname: {
+                        value: '',
+                        isValid: false
+                    },
+                    teacherEmail: {
+                        value: '',
+                        isValid: false
+                    },
+                    teacherMobile: {
+                        value: '',
+                        isValid: false
+                    },
+                    teacherPassword: {
+                        value: '',
+                        isValid: false
+                    }
+                }, false);
+                break;
+            case 'updateGroups':
+                setFormData({
+                    updatedGroupName: {
+                        value: '',
+                        isValid: false
+                    }
+                }, false);
+                break;
+            default: setFormData({
+                studentName: {
+                    value: '',
+                    isValid: false
+                },
+                studentSurname: {
+                    value: '',
+                    isValid: false
+                },
+                studentEmail: {
+                    value: '',
+                    isValid: false
+                },
+                studentPassword: {
+                    value: '',
+                    isValid: false
+                },
+                studentMobile: {
+                    value: '',
+                    isValid: false
+                }
+            },
+                false
+            );
+        }
+    }, [adminData.infoType, setFormData]);
 
     useEffect(() => {
-        if (props.infoType === 'groups') {
-            setFormData({ name: '' }, false);
-        }
-        if (props.infoType === 'updateGroups') {
-            setFormData({ name: '' }, false);
-        }
-
-    }, [props.infoType, setFormData]);
+        dispatch(actions.fetchGroups('Wybierz grupę'));
+    }, [dispatch]);
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const responseData = await sendRequest('http://localhost:5000/api/groups');
-                setSelect(responseData);
-            } catch (err) {
-                setErrorModalActive(true);
-            }
-        }
-        fetchData();
-
-    }, [sendRequest]);
+        error && dispatch(actions.errorModalActivator(true, error));
+    }, [dispatch, errorModalActive, error, adminData.loadedData]);
 
     const formSubmitHandler = async e => {
         e.preventDefault();
+        if (addAdminModal) {
+            dispatch(actions.toggleAddAdminModal('addAdminModal'));
+        } else {
+            dispatch(actions.toggleDataAdminModal('dataAdminModal'));
+        }
         let path;
         let body;
         let method;
-        switch (props.infoType) {
+        let addedData = (adminData.infoType.slice(0, -1));
+        switch (adminData.infoType) {
             case 'students':
-                path = props.infoType + '/signup';
+                path = adminData.infoType + '/signup';
                 body = JSON.stringify({
-                    name: formState.inputs.name.value,
-                    surname: formState.inputs.surname.value,
-                    mobile: formState.inputs.mobile.value,
-                    email: formState.inputs.email.value,
-                    password: formState.inputs.password.value
+                    name: formState.inputs.studentName.value,
+                    surname: formState.inputs.studentSurname.value,
+                    mobile: formState.inputs.studentMobile.value,
+                    email: formState.inputs.studentEmail.value,
+                    password: formState.inputs.studentPassword.value
                 });
                 method = 'POST';
                 break;
             case 'teachers':
-                path = props.infoType + '/create-teacher';
+                path = adminData.infoType + '/create-teacher';
                 body = JSON.stringify({
-                    name: formState.inputs.name.value,
-                    surname: formState.inputs.surname.value,
-                    mobile: formState.inputs.mobile.value,
-                    email: formState.inputs.email.value,
-                    password: formState.inputs.password.value
+                    name: formState.inputs.teacherName.value,
+                    surname: formState.inputs.teacherSurname.value,
+                    mobile: formState.inputs.teacherMobile.value,
+                    email: formState.inputs.teacherEmail.value,
+                    password: formState.inputs.teacherPassword.value
                 });
                 method = 'POST';
                 break;
             case 'partners':
-                path = props.infoType + '/create-partner';
+                path = adminData.infoType + '/create-partner';
                 method = 'POST';
                 break;
             case 'groups':
-                path = props.infoType + '/create-group';
+                path = adminData.infoType + '/create-group';
                 body = JSON.stringify({
-                    name: formState.inputs.name.value
+                    name: formState.inputs.groupName.value,
+                    lessonLength: formState.inputs.lessonLength.value,
+                    courseLength: formState.inputs.courseLength.value,
+                    lessonDayTime: weekDays
                 });
                 method = 'POST';
                 break;
             case 'updateGroups':
-                path = 'groups/' + formState.inputs.group.value;
+                path = 'groups/' + formState.inputs.updatedGroupName.value;
                 body = JSON.stringify({
-                    studentId: props.studentId,
+                    studentId: adminData.studentId,
+                    teacherId: adminData.teacherId
                 });
                 method = 'PATCH';
                 break;
             default: path = 'signup';
                 body = JSON.stringify({
-                    name: formState.inputs.name.value,
-                    surname: formState.inputs.surname.value,
-                    mobile: formState.inputs.mobile.value,
-                    email: formState.inputs.email.value,
-                    password: formState.inputs.password.value
+                    name: formState.inputs.studentName.value,
+                    surname: formState.inputs.studentSurname.value,
+                    mobile: formState.inputs.studentMobile.value,
+                    email: formState.inputs.studentEmail.value,
+                    password: formState.inputs.studentPassword.value
                 });
                 method = 'POST';
         }
 
         try {
-            await sendRequest(`http://localhost:5000/api/${path}`,
+            const response = await sendRequest(`http://localhost:5000/api/${path}`,
                 method,
                 body,
                 {
                     'Content-Type': 'application/json'
                 }
             );
-            props.dataLoaded(formState.inputs);
+            setNewDataAdded(response[addedData]);
         } catch (err) {
+            console.log(err);
             setErrorModalActive(true);
         }
     }
 
+    useEffect(() => {
+        if (newDataAdded) {
+            dispatch(actions.addNewData(newDataAdded));
+        }
+    }, [newDataAdded, dispatch]);
+
     const hideFormHandler = (e) => {
         e.preventDefault();
-        const form = [...document.querySelectorAll('.add-data-modal')];
-        form.forEach(item => item.classList.remove('add-data-modal--active'));
-
+        dispatch(actions.toggleDataAdminModal('dataAdminModal'));
     }
+
     const errorModalCancelHandler = () => {
-        setErrorModalActive(false);
-        clearError();
-
+        dispatch(actions.errorModalActivator(false, error));
     }
+
+    const checkedDays = useCallback((days) => {
+        setWeekDays(days);
+    }, []);
+
     let data;
-    if (props.infoType) {
+    if (adminData.infoType) {
         data = (
-            Object.keys(dataType[props.infoType]).map((item, index) =>
+            Object.keys(dataType[adminData.infoType]).map((item, index) =>
                 < React.Fragment key={index}>
                     <Input
-                        input={dataType[props.infoType][item].input}
-                        id={dataType[props.infoType][item].id}
-                        type={dataType[props.infoType][item].type}
-                        placeholder={dataType[props.infoType][item].placeholder}
+                        input={dataType[adminData.infoType][item].input}
+                        id={dataType[adminData.infoType][item].id}
+                        name={dataType[adminData.infoType][item].name}
+                        type={dataType[adminData.infoType][item].type}
+                        placeholder={dataType[adminData.infoType][item].placeholder}
+                        label={dataType[adminData.infoType][item].label}
+                        classLabel={dataType[adminData.infoType][item].classLabel}
                         onInput={inputHandler}
-                        validators={dataType[props.infoType][item].validators}
-                        errorText={dataType[props.infoType][item].errorText}
-                        classInput='add-data-modal__input'
-                        options={select.groups}
+                        validators={dataType[adminData.infoType][item].validators}
+                        errorText={dataType[adminData.infoType][item].errorText}
+                        classInput={dataType[adminData.infoType][item].class}
+                        options={props.selectGroups ? props.selectGroups : selectGroups.groups}
                         classOption='add-data-modal__option'
                         classSelect='add-data-modal__select'
+                        inputWrapperClass={dataType[adminData.infoType][item].inputWrapperClass}
+                        initialIsValid={dataType[adminData.infoType][item].initialIsValid}
                     />
-                </React.Fragment >
+                </ React.Fragment>
             )
         )
     };
@@ -176,23 +273,33 @@ const DataAdminModal = props => {
     return (
         <React.Fragment>
             {loading ? <Spinner /> : (
-                errorModalActive ? <ErrorModal
-                    class={errorModalActive && 'error-modal--active'}
-                    errorMessage={error}
+                adminData.errorModalActivator ? <ErrorModal
+                    class='error-modal--active'
+                    errorMessage={adminData.error}
                     errorHeaderMessage='Błędne dane ucznia.'
                     btnText='Zamknij'
                     click={errorModalCancelHandler}
                 /> :
                     (
-                        <form onSubmit={formSubmitHandler} className={`add-data-modal ${props.class}`}>
-                            <Logo logo='add-data-modal__logo' />
-                            {data}
+                        <form onSubmit={formSubmitHandler} className={`add-data-modal ${props.classDataAdminModal}`}>
+                            <div className='add-data-modal__heading'>
+                                <Logo logo='add-data-modal__logo' pink='add-data-modal__logo-pink' />
+                            </div>
+                            <div>{props.chosenCourseTitle}</div>
+                            <div className='add-data-modal__group-info'>
+                                {data}
+                            </div>
+                            {adminData.infoType === 'groups' && <WeekdaysCheckbox
+                                checkboxWrapperClass={'add-data-modal__checkbox-wrapper'}
+                                checkedDays={checkedDays}
+                                weekdaysHeading={props.weekdaysHeading}
+                                classWeekdaysHeading='add-data-modal__schedlue' />}
                             <div className='add-data-modal__buttons'>
                                 <Button
                                     type='submit'
-                                    btnText={`Dodaj ${props.btnTextContent}`}
+                                    btnText={props.btnTextContent || 'Dodaj'}
                                     disabled={!formState.isValid}
-                                    btn={`${!formState.isValid ? 'add-data-modal__button--disabled' : 'add-data-modal__button'}`}
+                                    btn='add-data-modal__button'
                                 />
                                 <Button
                                     type='text'

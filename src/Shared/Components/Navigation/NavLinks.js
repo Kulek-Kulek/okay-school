@@ -1,21 +1,27 @@
 import React, { useContext } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import NavSingleLink from './NavSingleLink';
 import Button from '../../Elements/Button/Button';
 import { AuthContex } from '../../Contex/auth-contex';
-import { ModalContex } from '../../Contex/modal-contex';
+import * as actions from '../../../store/actions/index';
 import './NavLinks.css';
+
 
 
 const NavLinks = props => {
 
+    const authModal = useSelector(state => state.authModal);
+
+    const dispatch = useDispatch();
+
     const auth = useContext(AuthContex);
-    const modalActivator = useContext(ModalContex);
+    // const modalActivator = useContext(ModalContex);
 
     const menuList = [
         { name: 'home', path: '/about', exact: true },
         { name: 'oferta kursów', path: '/offer' },
-        { name: 'dla partnerów', path: '/partners' },
+        { name: 'e-dziennik', path: '/register/student' },
         { name: 'admin', path: '/register/admin' }
     ];
 
@@ -31,13 +37,13 @@ const NavLinks = props => {
     ));
 
     const loginButton = (
-        !modalActivator.authModalActive && (
+        !authModal && (
             <Button
                 btnText={!auth.isLoggedIn ? 'zaloguj' : 'wyloguj'}
                 btn={`navigation__list-button ${auth.isLoggedIn && 'navigation__list-button--logout'}`}
                 arrowClassName='btn-arrow-right--active'
                 click={auth.isLoggedIn ? auth.logout :
-                    () => modalActivator.modalToggle('loginModalButton')} />)
+                    () => dispatch(actions.toggleAuthtModal('authModal'))} />)
     );
 
     return (
@@ -47,5 +53,6 @@ const NavLinks = props => {
         </ul>
     );
 };
+
 
 export default NavLinks;

@@ -29,6 +29,7 @@
     .navigation__list {
         flex-direction: row;
         justify-content: space-around;
+        z-index: 50;
     }
     .navigation__list-button {
         width: 10%;

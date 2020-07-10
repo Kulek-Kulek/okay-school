@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import ReactDOM from 'react-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 import Input from '../../../Shared/Elements/Input/Input';
@@ -15,11 +16,14 @@ import {
 import Button from '../../../Shared/Elements/Button/Button';
 import './AuthModal.css';
 import { AuthContex } from '../../../Shared/Contex/auth-contex';
-import { ModalContex } from '../../../Shared/Contex/modal-contex';
-
+import * as actionTypes from '../../../store/actions/actionTypes';
 
 
 const Auth = props => {
+
+    const authModal = useSelector(state => state.modal.authModal);
+
+    const dispatch = useDispatch();
 
     const [isLoginMode, setIsLoginMode] = useState(true);
     const [errorModalActive, setErrorModalActive] = useState(false);
@@ -40,7 +44,7 @@ const Auth = props => {
     );
 
     const auth = useContext(AuthContex);
-    const modalActivator = useContext(ModalContex);
+
 
     const authSubmitHandler = async e => {
         e.preventDefault();
@@ -57,7 +61,7 @@ const Auth = props => {
                     }
                 );
                 auth.login();
-                modalActivator.modalToggle('loginModalButton');
+
             } catch (err) {
                 setErrorModalActive(true);
             }
@@ -77,7 +81,7 @@ const Auth = props => {
                     }
                 );
                 auth.login();
-                modalActivator.modalToggle('loginModalButton');
+
             } catch (err) {
                 setErrorModalActive(true);
             }
@@ -159,7 +163,7 @@ const Auth = props => {
 
     const portalContent = (
         <React.Fragment>
-            <div className={!modalActivator.authModalActive ? 'auth-modal' : authModalClasses.join(' ')} >
+            <div className={authModal ? authModalClasses.join(' ') : 'auth-modal'} >
                 <ErrorModal
                     class={errorModalActive && ['error-modal--active', 'error-modal-auth'].join(' ')}
                     errorMessage={error}
@@ -167,9 +171,9 @@ const Auth = props => {
                     btnText='Zamknij'
                     click={errorModalCancelHandler} />
                 {loading ? < Spinner /> : (
-                    <div className={errorModalActive ? 'auth-modal-invisible' : undefined}>
+                    <div className={errorModalActive ? 'auth-modal-invisible' : ''}>
                         <span className='auth-modal__info-span'>Zaloguj się do serwisu, lub załóż konto.</span>
-                        <i className="fa fa-times-circle auth-modal__cancel-icon" aria-hidden="true" onClick={() => modalActivator.modalToggle('loginModalButton')}></i>
+                        <i className="fa fa-times-circle auth-modal__cancel-icon" aria-hidden="true" onClick={() => dispatch({ type: actionTypes.TOGGLE_AUTH_MODAL, modalName: 'authModal' })}></i>
                         <form onSubmit={authSubmitHandler} className='auth-modal__form'>
                             {!isLoginMode && signupInputs}
                             <Input
@@ -218,5 +222,6 @@ const Auth = props => {
 
     return ReactDOM.createPortal(portalContent, document.getElementById('auth-modal-hook'));
 };
+
 
 export default Auth;

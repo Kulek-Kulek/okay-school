@@ -36,6 +36,7 @@
     letter-spacing: 1px;
     margin-top: 8%;
     font-weight: 700;
+    text-shadow: 1px 1px black;
 }
 
 .our-clients__subtitle {
@@ -49,6 +50,7 @@
     font-family: sans-serif;
     letter-spacing: .8px;
     line-height: 18px;
+    text-shadow: 1px 2px black;
 }
 
 .our-clients__p::first-letter {
@@ -68,7 +70,7 @@
     font-family: var(--main-font);
     text-transform: uppercase;
     letter-spacing: 3px;
-    text-shadow: 1px 0 0 var(--main-color);
+    text-shadow: 2px 2px 0 var(--main-color);
     color: #fff;
     flex-basis: 25%;
     background-color: var(--green-color);

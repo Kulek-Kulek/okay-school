@@ -7,7 +7,7 @@ import './ErrorModal.css';
 const ErrorModal = props => {
   return (
     <div className={`error-modal ${props.class}`} >
-      <header className='error-modal__header'>
+      <header className={props.status ? ['error-modal__header', 'error-modal__header-ok'].join(' ') : 'error-modal__header'}>
         <p>{props.errorHeaderMessage}</p>
       </header>
       <p className='error-modal__message'>{props.errorMessage}</p>

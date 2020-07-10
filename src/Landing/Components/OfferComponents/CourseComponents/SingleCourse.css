@@ -77,6 +77,10 @@
     transition: .5s;
 }
 
+.course__a {
+    text-decoration: none;
+}
+
 .course__img-wrapper {
     /* background-color: red; */
     height: 25vh;

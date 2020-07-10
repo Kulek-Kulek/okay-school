@@ -1,8 +1,8 @@
 .auth-modal {
-    position: relative;
+    /* position: relative;
     display: flex;
-    flex-direction: column;
-    width: 95%;
+    flex-direction: column; */
+    width: 0%;
     padding: 1% 2% 5%;
     margin: 25% auto;
     text-align: center;
@@ -14,13 +14,26 @@
     display: none;
 }
 
+.auth-modal {
+    position: absolute;
+    right: 10%;
+    width: 0%;
+    padding: 1%;
+    margin: 5.5% auto;
+    display: none;
+    transition: .5s;
+}
+
+.auth-modal--active {
+    display: block;
+    animation: authModal-grow-mobile .2s linear forwards;
+}
+
 .auth-modal__info-span {
-    font-size: .85rem;
-    /* letter-spacing: 1px; */
+    font-size: .75rem;
     font-weight: bold;
     text-transform: uppercase;
-    margin-top: 2%;
-    padding: 0 10%;
+    margin: 2% 8% 0 0;
 }
 
 .auth-modal__cancel-icon {
@@ -82,6 +95,12 @@
     margin-top: 5%;
 }
 
+.auth-modal__login-button:disabled, .auth-modal__login-button:disabled:hover, .auth-modal__signup-button:disabled {
+    background-color: transparent;
+    color: #fff;
+    cursor: auto;
+}
+
 @media (orientation: landscape) {
     .auth-modal {
         padding: 2%;
@@ -136,6 +155,7 @@
         font-size: 1rem;
         letter-spacing: 2px;
         text-shadow: 1px 1px 0 #fff;
+        padding: 0 10%;
     }
     .auth-modal__login-button, .auth-modal__signup-button {
         width: 35%;
@@ -155,5 +175,11 @@
 @keyframes authModal-grow {
     to {
         width: 45%;
+    }
+}
+
+@keyframes authModal-grow-mobile {
+    to {
+        width: 80%;
     }
 }

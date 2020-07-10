@@ -1,35 +1,41 @@
-import React, { useContext } from 'react';
-import ReactDOM from 'react-dom';
-
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Input from '../../Elements/Input/Input';
 import { useForm } from '../../Hooks/form-hook';
-import {
-    VALIDATOR_REQUIRE,
-    VALIDATOR_EMAIL,
-    VALIDATOR_MINLENGTH
-} from '../../../Utility/form-validators';
+import { useHttpClient } from '../../../Shared/Hooks/http-hook';
+import { dataType } from '../../../Utility/dataModalData';
+import ErrorModal from '../../../Shared/Components/Modal/ErrorModal';
+import Spinner from '../../../Shared/Elements/LoadingSpinner/LoadingSpinner';
 import Button from '../../Elements/Button/Button';
-import { ModalContex } from '../../Contex/modal-contex';
 import Logo from '../Logo/Logo';
+import * as actions from '../../../store/actions/index';
 import './ContactModal.css';
 
 const ContactModal = props => {
 
+    const contactModal = useSelector(state => state.modal.contactModal);
+
+    const dispatch = useDispatch();
+
+    const { loading, error, status, sendRequest, clearError } = useHttpClient();
+
+    const [errorModalActive, setErrorModalActive] = useState(false);
+
     const [formState, inputHandler] = useForm({
-        name: {
+        contactName: {
             value: '',
             isValid: false
         },
-        email: {
+        contactEmail: {
             value: '',
             isValid: false
         },
-        tel: {
+        contactTel: {
             value: '',
             isValid: false
         },
-        textarea: {
+        contactTextarea: {
             value: '',
             isValid: true
         }
@@ -37,100 +43,129 @@ const ContactModal = props => {
         false
     );
 
-    const modalActivator = useContext(ModalContex);
 
-    const modalDataSubmitHandler = (e) => {
+    const modalDataSubmitHandler = async e => {
         e.preventDefault();
-        formState.isValid && modalActivator.modalToggle('cancelContactModalButton');
-        console.log(formState.inputs);
+
+        // formState.isValid && dispatch({ type: actions.toggleContactModal('contactModal') });
+        try {
+            await sendRequest('http://localhost:5000/api/contact',
+                'POST',
+                JSON.stringify({
+                    contactName: formState.inputs.contactName.value,
+                    contactMobile: formState.inputs.contactTel.value,
+                    contactEmail: formState.inputs.contactEmail.value,
+                    contactComment: formState.inputs.contactTextarea.value,
+                }),
+                {
+                    'Content-Type': 'application/json'
+                })
+            setErrorModalActive(true);
+            dispatch(actions.errorModalActivator(true, error));
+        } catch (err) {
+            console.log(err);
+            setErrorModalActive(true);
+            dispatch(actions.errorModalActivator(true, error));
+
+        }
     };
 
-    const portalContent = (
-        <div className={`pop-up-modal ${modalActivator.contactModalActive && 'pop-up-modal--active'}`}>
-            <div className='pop-up-modal__top'>
-                <div className='pop-up-modal__logo'>
-                    <Logo logo='pop-up-modal__logo-div' pink='pop-up-modal__logo-pink' />
-                </div>
-                <div className='pop-up-modal__contact-data'>
-                    <div className='footer__contact-details pop-up-modal__contact-details'>
-                        <div className='footer__info-div pop-up-modal__info-div'>
-                            <i className="fas fa-phone footer__i"></i>
-                            <span className='footer__info-span pop-up-modal__info-span'>500 097 398</span>
-                        </div>
-                        <div className='footer__info-div pop-up-modal__info-div'>
-                            <i className="fas fa-hourglass-end footer__i"></i>
-                            <span className='footer__info-span pop-up-modal__info-span'>Pn-So: 08.00 - 21.00</span>
-                        </div>
-                        <div className='footer__info-div pop-up-modal__info-div'>
-                            <i className="fas fa-envelope footer__i"></i>
-                            <span className='footer__info-span pop-up-modal__info-span'>okay@okay.edu.pl</span>
-                        </div>
-                        <div className='footer__info-div pop-up-modal__info-div'>
-                            <i className="far fa-lightbulb footer__i"></i>
-                            <span className='footer__info-span pop-up-modal__info-span'>Sprawy pilne: 24/7</span>
-                        </div>
-                        <div className='footer__info-div pop-up-modal__info-div'>
-                            Przyjemność z uczenia się
+    const errorModalCancelHandler = () => {
+        setErrorModalActive(false);
+        clearError();
+        dispatch(actions.errorModalActivator(false, error));
+        status && dispatch(actions.toggleContactModal('contactModal'));
+    }
+
+    let data;
+    if (props.infoType) {
+        data = (
+            Object.keys(dataType[props.infoType]).map((item, index) =>
+                < React.Fragment key={index}>
+                    <Input
+                        input={dataType[props.infoType][item].input}
+                        id={dataType[props.infoType][item].id}
+                        name={dataType[props.infoType][item].name}
+                        type={dataType[props.infoType][item].type}
+                        placeholder={dataType[props.infoType][item].placeholder}
+                        label={dataType[props.infoType][item].label}
+                        onInput={inputHandler}
+                        validators={dataType[props.infoType][item].validators}
+                        errorText={dataType[props.infoType][item].errorText}
+                        classInput={dataType[props.infoType][item].class}
+                        inputWrapperClass={dataType[props.infoType][item].inputWrapperClass}
+                        initialIsValid={dataType[props.infoType][item].initialIsValid}
+                    />
+                </ React.Fragment>
+            )
+        )
+    };
+
+
+    return (
+        <React.Fragment>
+            {loading ? <Spinner /> : (
+                errorModalActive ? <ErrorModal
+                    class={errorModalActive && 'error-modal--active basket__error-modal'}
+                    errorMessage={status ? 'Dziękujemy za wysłanie formularza. Skontaktujemy się z Tobą w ciągu jednego dnia.' : `${error}. Skontaktuj się z nami telefonicznie lub mailowo. Wszystkie dane kontaktowe podane są na dole strony.`}
+                    errorHeaderMessage={status ? 'Twój fromularz został wysłany.' : 'Nie udało mi się wysłać tego formularza.'}
+                    btnText='Zamknij'
+                    click={errorModalCancelHandler}
+                    status={status}
+                /> : (
+                        <div className={`pop-up-modal ${contactModal && 'pop-up-modal--active'}`}>
+                            <div className={'pop-up-modal__top'}>
+                                <div className='pop-up-modal__logo'>
+                                    <Logo logo='pop-up-modal__logo-div' pink='pop-up-modal__logo-pink' />
+                                </div>
+                                <div className='pop-up-modal__contact-data'>
+                                    <div className='footer__contact-details pop-up-modal__contact-details'>
+                                        <div className='footer__info-div pop-up-modal__info-div'>
+                                            <i className="fas fa-phone footer__i"></i>
+                                            <span className='footer__info-span pop-up-modal__info-span'>500 097 398</span>
+                                        </div>
+                                        <div className='footer__info-div pop-up-modal__info-div'>
+                                            <i className="fas fa-hourglass-end footer__i"></i>
+                                            <span className='footer__info-span pop-up-modal__info-span'>Pn-So: 08.00 - 21.00</span>
+                                        </div>
+                                        <div className='footer__info-div pop-up-modal__info-div'>
+                                            <i className="fas fa-envelope footer__i"></i>
+                                            <span className='footer__info-span pop-up-modal__info-span'>okay@okay.edu.pl</span>
+                                        </div>
+                                        <div className='footer__info-div pop-up-modal__info-div'>
+                                            <i className="far fa-lightbulb footer__i"></i>
+                                            <span className='footer__info-span pop-up-modal__info-span'>Sprawy pilne: 24/7</span>
+                                        </div>
+                                        <div className='footer__info-div pop-up-modal__info-div'>
+                                            Przyjemność z uczenia się
                             <div className='pop-up-modal__underline'></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className={'pop-up-modal__inputs'}>
+                                {data}
+                            </div>
+                            <div className='pop-up-modal__buttons'>
+                                <Button
+                                    btnText='Anuluj'
+                                    btn='pop-up-modal__button'
+                                    arrowClassName='btn-arrow-right--active'
+                                    click={() => dispatch(actions.toggleContactModal('contactModal'))} />
+                                <Button
+                                    btnText='Wyślij'
+                                    type='submit'
+                                    btn='pop-up-modal__button'
+                                    arrowClassName='btn-arrow-right--active'
+                                    click={modalDataSubmitHandler}
+                                    disabled={!formState.isValid} />
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div className='pop-up-modal__inputs'>
-                <Input
-                    input='input'
-                    type='text'
-                    placeholder='Twoje imię i nazwisko'
-                    id='name'
-                    validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(3)]}
-                    onInput={inputHandler}
-                    classInput='pop-up-modal__input'
-                    inputWrapperClass='pop-up-modal__input-wrapper' />
-                <Input
-                    input='input'
-                    type='email'
-                    placeholder='Twój adres email'
-                    id='email'
-                    validators={[VALIDATOR_REQUIRE(), VALIDATOR_EMAIL()]}
-                    onInput={inputHandler}
-                    classInput='pop-up-modal__input'
-                    inputWrapperClass='pop-up-modal__input-wrapper' />
-                <Input
-                    input='input'
-                    type='tel'
-                    placeholder='Podaj telefon kontaktowy.'
-                    id='tel'
-                    validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(6)]}
-                    onInput={inputHandler}
-                    classInput='pop-up-modal__input'
-                    inputWrapperClass='pop-up-modal__input-wrapper' />
-                <Input
-                    placeholder='Tutaj możesz wpisać woje uwagi.'
-                    id='textarea'
-                    validators={[VALIDATOR_MINLENGTH(0)]}
-                    onInput={inputHandler}
-                    rows={20}
-                    classInput='pop-up-modal__input'
-                    inputWrapperClass='pop-up-modal__input-wrapper' />
-            </div>
-            <div className='pop-up-modal__buttons'>
-                <Button
-                    btnText='Anuluj'
-                    btn='pop-up-modal__button'
-                    arrowClassName='btn-arrow-right--active'
-                    click={() => modalActivator.modalToggle('cancelContactModalButton')} />
-                <Button
-                    btnText='Wyślij'
-                    type='submit'
-                    btn='pop-up-modal__button'
-                    arrowClassName='btn-arrow-right--active'
-                    click={modalDataSubmitHandler} />
-            </div>
-        </div>
+                    ))
+            }
+        </React.Fragment>
     );
+}
 
-
-    return ReactDOM.createPortal(portalContent, document.getElementById('contact-modal-hook'));
-};
 
 export default ContactModal;

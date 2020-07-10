@@ -3,8 +3,6 @@
     display: flex;
     height: 20vh;
     background-color: rgba(51, 34, 34, .9);
-    /* background-color: var(--main-color); */
-    /* border-top: 2px solid var(--green-color); */
 }
 
 .footer__video {
@@ -60,7 +58,6 @@
 .footer__info-div-button {
     height: 45%;
     flex-basis: 42%;
-    /* border-bottom: 1px solid #fff; */
 }
 
 .footer__button {

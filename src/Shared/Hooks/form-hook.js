@@ -2,8 +2,8 @@ import { useReducer, useCallback } from 'react';
 
 
 const formReducer = (state, action) => {
-    switch (action.type) {
 
+    switch (action.type) {
         case 'INPUT_CHANGE':
             let formIsValid = true;
             for (const inputId in state.inputs) {
@@ -14,12 +14,14 @@ const formReducer = (state, action) => {
                     formIsValid = formIsValid && state.inputs[inputId].isValid;
                 };
             };
+
             return {
                 ...state,
                 inputs: {
                     ...state.inputs,
                     [action.inputId]: {
-                        value: action.value,
+                        value: action.inputClickedType === 'checkbox' ? action.checked : action.value,
+                        checked: action.inputClickedType === 'checkbox' && action.checked,
                         isValid: action.isValid
                     }
                 },
@@ -45,19 +47,21 @@ export const useForm = (initialInputs, initialFormValidity) => {
         });
 
 
-    const inputHandler = useCallback((id, value, isValid) => {
+    const inputHandler = useCallback((id, value, checked, inputClickedType, isValid) => {
+
         dispatch(
             {
                 type: 'INPUT_CHANGE',
-                value: value,
-                isValid: isValid,
+                value,
+                checked,
+                isValid,
+                inputClickedType,
                 inputId: id
             }
         );
     }, []);
 
     const setFormData = useCallback((updatedInputs, formValidity) => {
-
         dispatch({
             type: 'SET_DATA',
             inputs: updatedInputs,

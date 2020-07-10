@@ -9,7 +9,8 @@ const Button = props => {
             type={props.type}
             className={`button ${props.btn}`}
             disabled={props.disabled}
-            id={props.id}>
+            id={props.id}
+            name={props.name}>
             {props.btnText}
             <i className={`fas fa-long-arrow-alt-right btn-arrow-right ${props.arrowClassName}`}></i>
         </button>
