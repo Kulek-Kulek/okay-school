@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import Card from '../../../Shared/Components/Card/Card';
-import { useHttpClient } from '../../../Shared/Hooks/http-hook';
-import Spinner from '../../../Shared/Elements/LoadingSpinner/LoadingSpinner';
-import * as actions from '../../../store/actions/index';
+import Card from '../../../../Shared/Components/Card/Card';
+import { useHttpClient } from '../../../../Shared/Hooks/http-hook';
+import Spinner from '../../../../Shared/Elements/LoadingSpinner/LoadingSpinner';
+import * as actions from '../../../../store/actions/index';
 import './GroupItem.css';
-import Button from '../../../Shared/Elements/Button/Button';
+import Button from '../../../../Shared/Elements/Button/Button';
 
 const GroupItem = props => {
 

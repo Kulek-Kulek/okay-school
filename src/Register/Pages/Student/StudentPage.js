@@ -4,6 +4,7 @@ import React, { useContext } from 'react';
 import Header from '../../../Shared/Components/MainHeader/MainHeader';
 import Main from '../../../Shared/Components/Main/Main';
 import Navigation from '../../../Shared/Components/Navigation/Navigation';
+import StudentDashboard from '../../Components/Students/StudentDashboard';
 import UserNotLoggedin from '../../Components/Students/UserNotLoggedin';
 import { AuthContex } from '../../../Shared/Contex/auth-contex';
 import videoBanner from '../../../videos/video.mp4';
@@ -31,7 +32,7 @@ const PartnersPage = props => {
         <React.Fragment>
             <Header>
                 <Navigation />
-                {/* <StudentDashboard /> */}
+                <StudentDashboard />
             </Header>
             <Main mainClassName='user-main'>
                 {main}

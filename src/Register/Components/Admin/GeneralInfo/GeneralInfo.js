@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Spinner from '../../../../Shared/Elements/LoadingSpinner/LoadingSpinner';
 import Students from '../Students/Students';
 import Teachers from '../../Teachers/Teachers';
-import Groups from '../../Groups/Groups';
+import Groups from '../../Admin/Groups/Groups';
 import ErrorModal from '../../../../Shared/Components/Modal/ErrorModal';
 import DataAdminModal from '../../../../Shared/Components/Modal/DataAdminModal';
 import * as actions from '../../../../store/actions/index';
