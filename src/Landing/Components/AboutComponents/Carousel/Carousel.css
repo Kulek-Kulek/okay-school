@@ -17,16 +17,16 @@
     min-width: 100%;
     min-height: 100%;
     opacity: 0;
-    -webkit-animation: changeHeaderSlide 21s linear infinite;
-    animation: changeHeaderSlide 21s linear infinite;
+    -webkit-animation: changeHeaderSlide 24s linear infinite;
+    animation: changeHeaderSlide 24s linear infinite;
 }
 
 .carousel__img:nth-of-type(2) {
-    animation-delay: 7s;
+    animation-delay: 8s;
 }
 
 .carousel__img:nth-of-type(3) {
-    animation-delay: 14s;
+    animation-delay: 16s;
 }
 
 .carousel__slogan {
@@ -64,8 +64,8 @@
     border-top-left-radius: 5px;
     background-color: rgba(51, 34, 34, .3);
     text-shadow: 1px 3px var(--main-color);
-    -webkit-animation: headerCaptionH1 21s infinite linear both;
-    animation: headerCaptionH1 21s infinite linear both;
+    -webkit-animation: headerCaptionH1 24s infinite linear both;
+    animation: headerCaptionH1 24s .5s infinite linear both;
 }
 
 .carousel__sloganTwo {
@@ -79,16 +79,16 @@
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
     text-shadow: 1px 2px var(--main-color);
-    -webkit-animation: headerCaptionH2 21s infinite linear both;
-    animation: headerCaptionH2 21s infinite linear both;
+    -webkit-animation: headerCaptionH2 24s infinite linear both;
+    animation: headerCaptionH2 24s .5s infinite linear both;
 }
 
 .carousel__slogan:nth-of-type(2) .carousel__sloganMain, .carousel__slogan:nth-of-type(2) .carousel__sloganTwo {
-    animation-delay: 7s;
+    animation-delay: 8s;
 }
 
 .carousel__slogan:nth-of-type(3) .carousel__sloganMain, .carousel__slogan:nth-of-type(3) .carousel__sloganTwo {
-    animation-delay: 14s;
+    animation-delay: 16s;
 }
 
 @keyframes changeHeaderSlide {
@@ -111,19 +111,19 @@
 
 @keyframes headerCaptionH1 {
     0% {
-        opacity: 0
+        transform: translateX(120vw);
     }
-    5% {
-        opacity: 1;
+    2% {
+        transform: translateX(0);
     }
-    28.5% {
-        opacity: 1;
+    31% {
+        transform: translateX(0);
     }
     33% {
-        opacity: 0;
+        transform: translateX(120vw);
     }
     100% {
-        opacity: 0;
+        transform: translateX(2000px);
     }
 }
 
@@ -134,13 +134,13 @@
     3% {
         opacity: 0;
     }
-    13.5% {
+    8% {
         opacity: 1;
     }
-    25% {
+    26% {
         opacity: 1;
     }
-    32% {
+    31% {
         opacity: 0;
     }
     100% {

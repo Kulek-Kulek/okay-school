@@ -190,6 +190,7 @@ const DataAdminModal = props => {
                 method = 'POST';
                 break;
             case 'updateGroups':
+
                 path = 'groups/' + formState.inputs.updatedGroupName.value;
                 body = JSON.stringify({
                     studentId: adminData.studentId,

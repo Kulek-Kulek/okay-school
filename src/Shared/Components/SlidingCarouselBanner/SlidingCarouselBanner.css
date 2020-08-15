@@ -1,0 +1,19 @@
+.sliding-carousel-banner {
+    margin-top: 15vh;
+    display: flex;
+    height: 350px;
+}
+
+@media (orientation: landscape) {
+    .sliding-carousel-banner {
+        margin-top: 20vh;
+        height: 300px;
+    }
+}
+
+@media (min-width:1024px) {
+    .sliding-carousel-banner {
+        margin-top: 12vh;
+        height: 500px;
+    }
+}

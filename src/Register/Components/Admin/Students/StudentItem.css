@@ -9,7 +9,7 @@
 }
 
 .admin-main__h2 {
-    font-size: .8rem;
+    font-size: 1rem;
 }
 
 .admin-main__h5 {
@@ -31,7 +31,7 @@
     font-size: .8rem;
 }
 
-.admin-main__student-i {
+.admin-main__i {
     color: var(--main-color);
     cursor: pointer;
 }
@@ -41,11 +41,11 @@
     justify-content: space-between;
 }
 
-/* .admin-main__student-i:nth-child(2) {
+/* .admin-main__i:nth-child(2) {
     color: var(--green-color);
 }
 
-.admin-main__student-i:last-child {
+.admin-main__i:last-child {
     color: red;
 } */
 
@@ -76,23 +76,23 @@
         font-size: 1rem;
         /* background-color: red; */
     }
-    .admin-main__student-i {
+    .admin-main__i {
         transform: translateX(150px);
     }
-    .admin-main__item:hover .admin-main__student-i {
+    .admin-main__item:hover .admin-main__i {
         transform: translateX(0);
         transition: .5s;
     }
-    .admin-main__item:hover .admin-main__student-i:nth-child(2) {
+    .admin-main__item:hover .admin-main__i:nth-child(2) {
         transition-delay: .1s;
     }
-    .admin-main__student-i:first-child:hover {
+    .admin-main__i:first-child:hover {
         color: orange;
     }
-    .admin-main__student-i:nth-child(2):hover {
+    .admin-main__i:nth-child(2):hover {
         color: var(--green-color);
     }
-    .admin-main__student-i:last-child:hover {
+    .admin-main__i:last-child:hover {
         color: red;
     }
 }

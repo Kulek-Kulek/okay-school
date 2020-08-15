@@ -53,6 +53,8 @@ const reducer = (state = initialState, action) => {
         case actionTypes.ID_PROVIDER:
             return {
                 ...state,
+                studentId: null,
+                teacherId: null,
                 [action.idType]: action.id
             }
         case actionTypes.LOADING:

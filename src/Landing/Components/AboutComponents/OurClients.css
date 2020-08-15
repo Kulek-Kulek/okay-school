@@ -88,6 +88,20 @@
 .our-clients__logo-div {
     flex-basis: 40%;
     height: 20%;
+    transition: .3s;
+}
+
+.our-clients__logo-div:nth-of-type(odd) {
+    transform: translateX(-10px);
+}
+
+.our-clients__logo-div:nth-of-type(even) {
+    transform: translateX(10px);
+}
+
+.our-clients__logo-div--active {
+    transform: translateX(0)!important;
+    transition: .3s;
 }
 
 .our-clients__logo-img {
@@ -186,6 +200,10 @@
         font-size: 1.8rem;
         font-weight: bold;
     }
+    .our-clients__a {
+        text-decoration: none;
+        color: #fff;
+    }
     .our-clients__button-div {
         margin-top: 7%;
         width: 45%;
@@ -232,5 +250,11 @@
         flex-basis: 40%;
         padding: 0 3%;
         height: 10%;
+    }
+    .our-clients__logo-div:nth-of-type(odd) {
+        transform: translateX(-45px);
+    }
+    .our-clients__logo-div:nth-of-type(even) {
+        transform: translateX(45px);
     }
 }

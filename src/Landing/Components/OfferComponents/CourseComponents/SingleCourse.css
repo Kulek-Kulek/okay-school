@@ -82,8 +82,23 @@
 }
 
 .course__img-wrapper {
-    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 25vh;
+}
+
+.course__img {
+    width: 95%;
+    height: 80%;
+    border-radius: 10px;
+}
+
+@media(orientation: landscape) {
+    .course__img {
+        width: 55%;
+        height: 100%;
+    }
 }
 
 @media (min-width: 1024px) {
@@ -112,7 +127,6 @@
         padding: 2% 3% 0;
         font-size: 17px;
         font-family: 'Fira Sans', Arial, sans-serif;
-        /* background-color: #ccc; */
     }
     .course__advantages {
         margin-left: 5%;
@@ -156,5 +170,9 @@
     }
     .course:nth-of-type(odd) .course__img-wrapper {
         order: -1;
+    }
+    .course__img {
+        width: 85%;
+        height: 45%;
     }
 }

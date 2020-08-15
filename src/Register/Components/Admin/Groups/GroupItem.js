@@ -21,9 +21,25 @@ const GroupItem = props => {
     }
     const deleteHandler = async e => {
         try {
-            await sendRequest(`http://localhost:5000/api/${props.infoType}/${props.id}`,
+            await sendRequest(`http://localhost:5000/api/groups/${props.id}`,
                 'DELETE');
             dispatch(actions.deleteData(props.id));
+        } catch (err) {
+            setErrorModalActive(true);
+        }
+    }
+
+    const deleteDataFromGroup = async e => {
+        try {
+            await sendRequest(`http://localhost:5000/api/groups/remove-from-group/${props.id}`,
+                'PATCH',
+                JSON.stringify({
+                    [e.target.name + 'Id']: e.target.id,
+                }),
+                {
+                    'Content-Type': 'application/json'
+                });
+            // dispatch(actions.deleteData(props.id));
         } catch (err) {
             setErrorModalActive(true);
         }
@@ -34,18 +50,31 @@ const GroupItem = props => {
         students = props.studentData.map((s, index) => (
             <div className='admin-main__populated-data-div' key={s.email + index}>
                 <h5 className='admin-main__populated-data'>{s.name + ' ' + s.surname}</h5>
-                <Button btnText='usuń' btn='admin-main__delete-btn' />
+                <Button
+                    btnText='usuń'
+                    btn='admin-main__delete-btn'
+                    id={s.id}
+                    name='student'
+                    click={deleteDataFromGroup}
+                />
             </div>
         ))
     }
     let groupLeader;
     if (props.teacherData) {
         groupLeader = props.teacherData.map(t => (
-            <h4 key={t.id} className='admin-main__populated-data'>{'Lektor: ' + t.name + ' ' + t.surname}</h4>
+            <div className='admin-main__populated-data-div' key={t.id}>
+                <h4 className='admin-main__populated-data'>{'Lektor: ' + t.name + ' ' + t.surname}</h4>
+                <Button
+                    btnText='usuń'
+                    btn='admin-main__delete-btn'
+                    id={t.id}
+                    name='teacher'
+                    click={deleteDataFromGroup}
+                />
+            </div>
         ));
     };
-
-
 
     return (
         <li className="admin-main__item">
@@ -54,7 +83,10 @@ const GroupItem = props => {
                 <div className="admin-main__info-group-div">
                     <h2 className='admin-main__h2'>{`Grupa ${props.name}`}</h2>
                     {groupLeader}
-                    {students}
+                    <div>
+                        <span>Uczniowie:</span>
+                        {students}
+                    </div>
                 </div>
                 <div className='admin-main__i-wrapper'>
                     <i onClick={editHandler} className="fas fa-pen admin-main__i"></i>

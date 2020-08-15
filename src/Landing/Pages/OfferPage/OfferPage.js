@@ -13,7 +13,7 @@ const OfferPage = props => {
     return (
         <React.Fragment>
             <MainHeader headerClassName='offer__header'>
-                <Navigation navClassName='offer__navigation' />
+                <Navigation navClassName='offer__nav-desktop' />
                 <SlidingSlogans />
             </MainHeader>
             <Main mainClassName='offer__main'>
@@ -21,8 +21,6 @@ const OfferPage = props => {
             </Main>
             <Footer />
         </React.Fragment>
-
-
     );
 }
 

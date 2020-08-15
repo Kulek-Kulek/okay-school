@@ -43,7 +43,7 @@ const TeacherItem = props => {
         groups = props.groupData.map(g => (
             <div className='admin-main__populated-data-div' key={g.id}>
                 <h5 className='admin-main__populated-data'>{g.name}</h5>
-                <Button btnText='usuń' btn='admin-main__delete-btn' />
+                {/* <Button btnText='usuń' btn='admin-main__delete-btn' /> */}
             </div>
         ))
     }

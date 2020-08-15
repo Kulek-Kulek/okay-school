@@ -1,13 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 
 import Header from '../../../Shared/Components/MainHeader/MainHeader';
 import Main from '../../../Shared/Components/Main/Main';
 import Navigation from '../../../Shared/Components/Navigation/Navigation';
 import StudentDashboard from '../../Components/Students/StudentDashboard';
-import UserNotLoggedin from '../../Components/Students/UserNotLoggedin';
+import StudentInfoType from '../../Components/Students/StudentInfoType';
+// import UserNotLoggedin from '../../Components/Students/UserNotLoggedin';
 import { AuthContex } from '../../../Shared/Contex/auth-contex';
-import videoBanner from '../../../videos/video.mp4';
+import { changeActiveStudentInfoType } from '../../Components/Students/changeActiveStudentInfoType';
 
 import './StudentPage.css';
 
@@ -17,9 +18,9 @@ const PartnersPage = props => {
     // const authModalActivator = useContext(ModalContex);
     const auth = useContext(AuthContex);
 
-    let main = (
-        <div>I AM PARTNERS logged</div>
-    );
+    useEffect(() => {
+        changeActiveStudentInfoType();
+    }, []);
 
     // if (!auth.isLoggedIn) {
     //     main = (<UserNotLoggedin
@@ -32,10 +33,10 @@ const PartnersPage = props => {
         <React.Fragment>
             <Header>
                 <Navigation />
-                <StudentDashboard />
             </Header>
             <Main mainClassName='user-main'>
-                {main}
+                <StudentDashboard />
+                <StudentInfoType />
             </Main>
         </React.Fragment>
     );

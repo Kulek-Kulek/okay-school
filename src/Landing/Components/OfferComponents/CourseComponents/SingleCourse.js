@@ -71,7 +71,9 @@ const SingleCourse = props => {
                     click={courseChosenHandler}
                 />
             </div>
-            <div className={`course__img-wrapper ${props.class + '__img-wrapper'}`}></div>
+            <div className={`course__img-wrapper ${props.class + '__img-wrapper'}`}>
+                <img className='course__img' src={props.src} alt={props.alt} />
+            </div>
         </div >
     );
 }

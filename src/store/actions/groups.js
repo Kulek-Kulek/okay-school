@@ -9,7 +9,7 @@ export const loadGroups = (loadedGroups = [], chooseTitle) => {
     }
 }
 
-export const loadinGroupsFailed = () => {
+export const loadingGroupsFailed = () => {
     return {
         type: actionTypes.LOADING_GROUPS_FAILED
     }
@@ -21,7 +21,7 @@ export const fetchGroups = (chooseTitle) => {
             .then(res => res.json())
             .then(data => dispatch(loadGroups(data.groups, chooseTitle)))
             .catch(err => {
-                dispatch(loadinGroupsFailed());
+                dispatch(loadingGroupsFailed());
             })
     }
 }

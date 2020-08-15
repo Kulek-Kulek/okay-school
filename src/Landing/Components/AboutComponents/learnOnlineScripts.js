@@ -43,3 +43,21 @@ export const onlineLearningTypingEffect = () => {
 
     onlineLearningTyping();
 }
+
+
+
+export const macShakeOnScroll = () => {
+    const macImg = document.querySelector('.learn-online__img');
+    const offers = document.querySelector('.offers');
+    let offersSectionFromTop;
+
+    if (offers) {
+        offersSectionFromTop = offers.offsetTop;
+    }
+
+    if (window.scrollY >= offersSectionFromTop * 1.5) {
+        macImg.classList.add('learn-online__img--active');
+    }
+    window.addEventListener('scroll', macShakeOnScroll);
+}
+

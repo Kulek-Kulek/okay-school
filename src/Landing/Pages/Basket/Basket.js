@@ -118,7 +118,9 @@ const Basket = props => {
                     lessonType: formState.inputs.orderCourseType.value,
                     courseName: basket.courseName,
                     coursePrice: basket.price,
-                    unavailable: weekDays
+                    unavailable: weekDays,
+                    submissionDate: new Date().toLocaleDateString(),
+                    submissionTime: new Date().toLocaleTimeString(),
                 }),
                 {
                     'Content-Type': 'application/json'

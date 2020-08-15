@@ -5,7 +5,7 @@ import Card from '../../../../Shared/Components/Card/Card';
 import { useHttpClient } from '../../../../Shared/Hooks/http-hook';
 import Spinner from '../../../../Shared/Elements/LoadingSpinner/LoadingSpinner';
 import ErrorModal from '../../../../Shared/Components/Modal/ErrorModal';
-import Button from '../../../../Shared/Elements/Button/Button';
+// import Button from '../../../../Shared/Elements/Button/Button';
 import * as actions from '../../../../store/actions/index';
 import './StudentItem.css';
 
@@ -27,7 +27,7 @@ const StudentItem = props => {
     const editHandler = e => {
         console.log('clicked');
     }
-    const deleteHandler = async e => {
+    const deleteHandler = async () => {
         try {
             await sendRequest(`http://localhost:5000/api/students/${props.id}`,
                 'DELETE');
@@ -42,13 +42,17 @@ const StudentItem = props => {
         clearError();
     }
 
-
     let groups;
     if (props.groupData) {
         groups = props.groupData.map(g => (
             <div className='admin-main__populated-data-div' key={g.name}>
                 <h5 className='admin-main__populated-data'>{`Grupa: ${g.name}`}</h5>
-                <Button btnText='usuń' btn='admin-main__delete-btn' />
+                {/* <Button
+                    btnText='usuń'
+                    btn='admin-main__delete-btn'
+                    id={g.id}
+                    click={deleteStudentFromGroupHandler}
+                /> */}
             </div>
         ));
     }
@@ -65,9 +69,9 @@ const StudentItem = props => {
                     {groups}
                 </div>
                 <div className='admin-main__i-student-wrapper'>
-                    <i onClick={addStudentToGroupHandler} className="fas fa-user-plus admin-main__student-i"></i>
-                    <i onClick={editHandler} className="fas fa-pen admin-main__student-i"></i>
-                    <i onClick={deleteHandler} className="fas fa-trash-alt admin-main__student-i"></i>
+                    <i onClick={addStudentToGroupHandler} className="fas fa-user-plus admin-main__i"></i>
+                    <i onClick={editHandler} className="fas fa-pen admin-main__i"></i>
+                    <i onClick={deleteHandler} className="fas fa-trash-alt admin-main__i"></i>
                 </div>
             </Card>
         </li>

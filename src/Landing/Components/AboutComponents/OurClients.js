@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import './OurClients.css';
 import helvetia from '../../../images/client-logos/helvetia.jpg';
@@ -6,10 +6,15 @@ import topline from '../../../images/client-logos/topline.jpg';
 import meblosiek from '../../../images/client-logos/meblosiek.jpg';
 import pfleiderer from '../../../images/client-logos/pfleiderer.jpg';
 import wielton from '../../../images/client-logos/wielton.jpg';
-import Button from '../../../Shared/Elements/Button/Button';
+import LinkElement from '../../../Shared/Elements/LinkElement/LinkElement';
+import { companyLogosScrollEffect } from './ourClientsScripts';
 
 
 const OurClients = props => {
+
+    useEffect(() => {
+        companyLogosScrollEffect();
+    }, []);
 
     const companyLogoImgs = [helvetia, meblosiek, topline, pfleiderer, wielton];
 
@@ -18,10 +23,6 @@ const OurClients = props => {
             <img className='our-clients__logo-img' src={imgSrc} alt={'logo' + index} />
         </div>
     ));
-
-    const buttonHandler = () => {
-        console.log('click');
-    }
 
     return (
         <section className='our-clients'>
@@ -34,11 +35,13 @@ const OurClients = props => {
                         Moi kursanci to osoby wymagające, dla których ważny jest osobisty rozwój, podnoszenie swoich kwalifikacji oraz poczucie, że dobrze zainwestowali swój czas. Dzięki nieustannemu dbaniu o osobisty rozwój poparty międzynarodowymi certyfikatami, takimi jak Certificate of Proficiency in English (University of Cambridge ESOL Examinations), czy First Certificate for Teachers of Business English zdanemu w Londyńskiej Izbie Przemysłowo-Handlowej, mogę zaproponować swoim kursantom sesje z elementami pracy coachingowej z jasno i skutecznie zdefiniowanymi celami językowymi.
                     </p>
                     <div className='our-clients__button-div'>
-                        <Button
+                        <LinkElement
+                            to='/offer'
+                            className='our-clients__a'
                             btnText='więcej'
                             btn={'our-clients__button pulse'}
-                            click={buttonHandler}
-                            arrowClassName='btn-arrow-right--active' />
+                            arrowClassName='btn-arrow-right--active'
+                        />
                     </div>
                 </div>
             </div>

@@ -7,7 +7,7 @@ import Logo from '../Logo/Logo';
 import Button from '../../Elements/Button/Button';
 import ContactModal from '../Modal/ContactModal';
 import videoSrc from '../../../videos/video.mp4';
-import * as actionTypes from '../../../store/actions/actionTypes';
+import * as actions from '../../../store/actions/index';
 
 
 const Footer = props => {
@@ -15,8 +15,7 @@ const Footer = props => {
     const dispatch = useDispatch();
 
     const sendMessageButtonHandler = () => {
-
-        dispatch({ type: actionTypes.TOGGLE_CONTACT_MODAL, modalName: 'contactModal' })
+        dispatch(actions.toggleContactModal('contactModal'));
     }
 
     return (

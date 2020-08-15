@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import NavLinks from './NavLinks';
@@ -6,6 +6,7 @@ import Logo from '../Logo/Logo';
 import SideDrawer from '../Navigation/Side-Drawer';
 import Backdrop from '../../Components/Backdrop/Backdrop';
 import { ModalContex } from '../../Contex/modal-contex';
+import { navigationToggle } from './navigationToggle';
 import './Navigation.css';
 
 const Navigation = props => {
@@ -21,6 +22,10 @@ const Navigation = props => {
     const closeDrawerHandler = () => {
         setDrawerIsOpen(false);
     };
+
+    useEffect(() => {
+        navigationToggle();
+    }, []);
 
 
     return (

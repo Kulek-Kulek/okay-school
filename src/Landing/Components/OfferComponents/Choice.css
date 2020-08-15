@@ -4,6 +4,7 @@
     justify-content: space-evenly;
     align-items: center;
     height: 120vh;
+    overflow: hidden;
 }
 
 .offer__type {
@@ -107,10 +108,21 @@
         height: 80%;
         width: 31%;
         transition: .5s;
+        transform: translateY(200px);
+        transition: .4s;
+    }
+    .offer__type:nth-child(2) {
+        transition-delay: .1s;
+    }
+    .offer__type:nth-child(3) {
+        transition-delay: .2s;
     }
     .offer__type:hover {
         box-shadow: 10px 10px 15px var(--main-color);
         transform: scale(1.02);
+    }
+    .offer__type--active {
+        transform: translateY(0);
     }
     .offer__desc-heading {
         flex-basis: 15%;

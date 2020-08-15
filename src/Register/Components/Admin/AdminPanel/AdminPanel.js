@@ -79,9 +79,9 @@ const AdminPanel = props => {
 
     return (
         <React.Fragment>
-            <div className='admin-header__buttons-wrapper'>
+            <nav className='admin-header__buttons-wrapper'>
                 {buttons}
-            </div>
+            </nav>
             <div className='admin-header__button-add-wrapper'>
                 <Button
                     id={adminData.infoType}

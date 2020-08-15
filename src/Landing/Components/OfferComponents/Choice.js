@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import imgGe from '../../../images/offer/ge.jpg';
 import imgB2B from '../../../images/offer/business.jpg';
 import imgAbroad from '../../../images/offer/abroad.jpg';
 import LinkElement from '../../../Shared/Elements/LinkElement/LinkElement';
+import { offerTypeEffect } from './choiceScripts.js';
 import './Choice.css';
 
 const Choice = props => {
+
+    useEffect(() => {
+        offerTypeEffect();
+    }, []);
+
     return (
         <div className='offer__choice'>
             <div className='offer__type'>

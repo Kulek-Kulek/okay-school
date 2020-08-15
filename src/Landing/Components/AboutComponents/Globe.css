@@ -21,7 +21,6 @@
     height: 100%;
     border-radius: 50%;
     animation: globe-rotate 70s linear infinite;
-    /* background-color: rgba(51, 34, 34, .4); */
 }
 
 .globe__slogan {
@@ -31,9 +30,28 @@
     left: 0;
     top: 40%;
     font-size: 1.4rem;
+    color: var(--main-color);
     font-family: var(--main-font);
     text-transform: capitalize;
     transform: skewX(-20deg) rotateX(20deg);
+}
+
+.globe__slogan-minor {
+    color: var(--green-color);
+}
+
+.globe__slogan-minor--active {
+    color: var(--main-color);
+    animation: globeSloganEffect .5s .3s linear;
+}
+
+.globe__slogan-main--active {
+    color: var(--green-color);
+    animation: globeSloganEffect .5s linear;
+}
+
+.globe__slogan-minor--active {
+    color: var(--main-color);
 }
 
 .globe__slogan:nth-child(2) {
@@ -73,12 +91,22 @@
     background-color: transparent;
     border-radius: 5px;
     text-transform: capitalize;
+    cursor: pointer;
 }
 
 @keyframes globe-rotate {
     to {
         -webkit-transform: rotate(360deg);
         transform: rotate(360deg);
+    }
+}
+
+@keyframes globeSloganEffect {
+    49% {
+        transform: scale(1.4);
+    }
+    100% {
+        transform: scale(1);
     }
 }
 

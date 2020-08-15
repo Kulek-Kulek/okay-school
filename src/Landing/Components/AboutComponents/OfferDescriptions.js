@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
+import { displayOffers } from './offerDescriptionScripts';
 import './OfferDescriptions.css';
 
 
 const OfferDecriptions = props => {
+
+    useEffect(() => {
+        displayOffers();
+    }, []);
 
     return (
         <section data-section='introduction' className="offers">

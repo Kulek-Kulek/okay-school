@@ -10,12 +10,12 @@
     background-color: #ccc;
     border: 1px solid var(--green-color);
     z-index: 1000;
-    transition: .3s;
+    transition: .2s;
 }
 
 .pop-up-modal--active {
     transform: translate(-50%, -40%);
-    transition: .3s;
+    transition: .2s;
 }
 
 .pop-up-modal__top {
@@ -107,6 +107,7 @@
 }
 
 .pop-up-modal__button {
+    width: 45%;
     font-size: 1rem;
     padding: .5% 4%;
     border: 1px solid #fff;
@@ -187,6 +188,7 @@
         padding: 1%;
     }
     .pop-up-modal__button {
+        width: 20%;
         letter-spacing: 3px;
         font-size: 1rem;
     }
