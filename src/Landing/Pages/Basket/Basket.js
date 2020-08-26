@@ -208,7 +208,8 @@ const Basket = props => {
                                         <WeekdaysCheckbox
                                             checkedDays={checkedDays}
                                             weekdaysHeading='Wybierz TYLKO te dni, w które NIE możesz mieć zajęć'
-                                            classWeekdaysHeading='basket__weekdaysHeading' />
+                                            classWeekdaysHeading='basket__weekdaysHeading'
+                                            checkboxWrapperClass='basket__weekdays-wrapper' />
                                         <div className='basket__button-wrapper'>
                                             <Button
                                                 btn='basket__button'

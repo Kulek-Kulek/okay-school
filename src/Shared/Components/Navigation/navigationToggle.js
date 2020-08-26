@@ -6,19 +6,21 @@ export const navigationToggle = () => {
     const nav = document.querySelector('.navigation');
     // console.log(position, scrollPosition);
 
-    nav.classList.add('navigation--active');
-    if (position === 0) {
-
+    if (nav) {
+        nav.classList.add('navigation--active');
+    }
+    if (position === 0 && nav) {
         nav.classList.add('navigation--active');
         scrollPosition = 0;
     }
-    if (position >= scrollPosition) {
+    if (position >= scrollPosition && nav) {
         nav.classList.add('navigation--active');
         scrollPosition = position;
     } else {
-
-        nav.classList.remove('navigation--active');
-        scrollPosition = position;
+        if (nav) {
+            nav.classList.remove('navigation--active');
+            scrollPosition = position;
+        }
     }
 }
 

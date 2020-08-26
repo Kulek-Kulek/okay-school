@@ -1,6 +1,6 @@
 .learn-online {
     position: relative;
-    height: 30vh;
+    height: 45vh;
     margin-bottom: 5%;
 }
 
@@ -33,7 +33,7 @@
     text-align: center;
     height: 100%;
     width: 100%;
-    margin-top: 30%;
+    margin-top: 40%;
     background-image: url('../../../images/learn-online/bg-learn-online.jpg');
     background-size: cover;
     background-attachment: fixed;
@@ -51,7 +51,7 @@
     text-align: start;
     color: #fff;
     font-family: var(--main-font);
-    font-size: .9rem;
+    font-size: 1.1rem;
 }
 
 .learn-online__single-slogan::after {

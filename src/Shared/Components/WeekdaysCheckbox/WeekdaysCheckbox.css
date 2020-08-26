@@ -34,7 +34,7 @@
 }
 
 .add-data-modal__from-input-wrapper, .add-data-modal__to-input-wrapper, .add-data-modal__checkbox-input-wrapper {
-    width: 100%;
+    width: calc(100%/3);
     display: flex;
     justify-content: space-between;
     align-items: center;

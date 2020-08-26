@@ -16,11 +16,8 @@ const LearnOnline = props => {
     const contactModal = useSelector(state => state.modal.contactModal);
 
     useEffect(() => {
-        if (!contactModal) {
-            onlineLearningTypingEffect();
-        } if (contactModal) {
-            return
-        }
+        onlineLearningTypingEffect();
+        macShakeOnScroll();
     }, [contactModal]);
 
     return (
