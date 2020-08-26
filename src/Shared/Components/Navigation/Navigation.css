@@ -54,15 +54,18 @@
     width: 8px;
     height: 5px;
     border-radius: 5px;
+    -webkit-animation: hamburger-snail-move 9s infinite linear;
     animation: hamburger-snail-move 9s infinite linear;
 }
 
 .nav__hamburger-span:nth-of-type(2) .nav__haburger-snail {
     animation: hamburger-snail-move 9s infinite reverse linear;
+    -webkit-animation-delay: -3s;
     animation-delay: -3s;
 }
 
 .nav__hamburger-span:nth-of-type(3) .nav__haburger-snail {
+    -webkit-animation-delay: 6s;
     animation-delay: 6s;
 }
 
@@ -77,6 +80,12 @@
 .navigation__sideDrawer {
     height: 100%;
     /* background-color: red; */
+}
+
+@-webkit-keyframes hamburger-snail-move {
+    to {
+        transform: translateX(12rem);
+    }
 }
 
 @keyframes hamburger-snail-move {

@@ -104,7 +104,7 @@ const Basket = props => {
         e.preventDefault();
 
         try {
-            await sendRequest('http://localhost:5000/api/orders',
+            await sendRequest(process.env.REACT_APP_BACKEND_URL + '/orders',
                 'POST',
                 JSON.stringify({
                     name: formState.inputs.orderName.value,

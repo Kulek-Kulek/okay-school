@@ -26,6 +26,7 @@
 
 .auth-modal--active {
     display: block;
+    -webkit-animation: authModal-grow-mobile .2s linear forwards;
     animation: authModal-grow-mobile .2s linear forwards;
 }
 
@@ -140,6 +141,7 @@
     }
     .auth-modal--active {
         display: block;
+        -webkit-animation: authModal-grow .2s linear forwards;
         animation: authModal-grow .2s linear forwards;
     }
     .auth-modal__cancel-icon {
@@ -172,9 +174,21 @@
     }
 }
 
+@-webkit-keyframes authModal-grow {
+    to {
+        width: 45%;
+    }
+}
+
 @keyframes authModal-grow {
     to {
         width: 45%;
+    }
+}
+
+@-webkit-keyframes authModal-grow-mobile {
+    to {
+        width: 80%;
     }
 }
 

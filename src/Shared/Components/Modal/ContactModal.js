@@ -49,7 +49,7 @@ const ContactModal = props => {
 
         // formState.isValid && dispatch({ type: actions.toggleContactModal('contactModal') });
         try {
-            await sendRequest('http://localhost:5000/api/contact',
+            await sendRequest(process.env.REACT_APP_BACKEND_URL + '/contact',
                 'POST',
                 JSON.stringify({
                     contactName: formState.inputs.contactName.value,

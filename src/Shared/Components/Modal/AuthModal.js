@@ -50,7 +50,7 @@ const Auth = props => {
         e.preventDefault();
         if (isLoginMode) {
             try {
-                await sendRequest('http://localhost:5000/api/students/login',
+                await sendRequest(process.env.REACT_APP_BACKEND_URL + '/students/login',
                     'POST',
                     JSON.stringify({
                         email: formState.inputs.email.value,
@@ -67,7 +67,7 @@ const Auth = props => {
             }
         } else {
             try {
-                await sendRequest('http://localhost:5000/api/students/signup',
+                await sendRequest(process.env.REACT_APP_BACKEND_URL + '/students/signup',
                     'POST',
                     JSON.stringify({
                         name: formState.inputs.name.value,

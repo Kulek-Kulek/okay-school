@@ -20,6 +20,7 @@
     width: 100%;
     height: 100%;
     border-radius: 50%;
+    /* background-color: rgb(12, 12, 11); */
     animation: globe-rotate 70s linear infinite;
 }
 
@@ -38,6 +39,7 @@
 
 .globe__slogan-minor {
     color: var(--green-color);
+    text-transform: none;
 }
 
 .globe__slogan-minor--active {
@@ -55,7 +57,7 @@
 }
 
 .globe__slogan:nth-child(2) {
-    margin-top: 15%;
+    margin-top: 20%;
     font-size: 1.2rem;
 }
 
@@ -116,7 +118,7 @@
     }
     .globe__img-wrapper {
         width: 40vw;
-        flex-basis: 60%;
+        flex-basis: 70%;
     }
 }
 
@@ -133,7 +135,7 @@
         font-size: 2.5rem;
     }
     .globe__slogan:nth-child(2) {
-        font-size: 1.7rem;
+        font-size: 2rem;
     }
     .globe__find-me-question {
         font-size: 2.8rem;

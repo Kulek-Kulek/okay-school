@@ -48,7 +48,7 @@ export const loadinDataFailed = () => {
 
 export const fetchData = (infoType) => {
     return dispatch => {
-        fetch(`http://localhost:5000/api/${infoType}`)
+        fetch(process.env.REACT_APP_BACKEND_URL + '/' + infoType)
             .then(res => res.json())
             .then(data => dispatch(loadData(data[infoType], infoType)))
             .catch(err => {

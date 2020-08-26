@@ -2,8 +2,8 @@
 
 export const onlineLearningTypingEffect = () => {
     const wrappingDiv = document.querySelector('.learn-online__slogans')
-    const slogans = ['Wow, cieszę się, że jesteś tutaj. Lubię mówić do ludzi!',
-        'Jak masz na imię? Może Stanisław? Był tu taki jeden Stanisław kiedyś, spędziliśmy razem piękne wspólne chwile.', 'Niestety później żona kazała mu wrzucić węgiel do komórki. Mam nadzieję, że ty nie masz komórki :).'];
+    const slogans = ['Wow, cieszę się, że jesteś tutaj. Jak masz na imię?',
+        'Już dzisiaj zapraszam Cię na pokazową lekcję online na platformie Zoom lub Teams bez żadnych dodatkowych kosztów.', 'Wszystkie zajęcia wspmagane przez Google Docs, wirtualny sekretariat i mutimedia.', 'Wyślij wiadmość i umów się na swoje zajęcia.'];
 
     let wordIndex = 0;
     let oldTime = 0;
@@ -38,12 +38,10 @@ export const onlineLearningTypingEffect = () => {
             activeDOMElement.textContent += letter;
             wordIndex++;
         }
-        requestAnimationFrame(onlineLearningTyping)
+        requestAnimationFrame(onlineLearningTyping);
     }
-
     onlineLearningTyping();
 }
-
 
 
 export const macShakeOnScroll = () => {

@@ -58,14 +58,14 @@ const SingleCourse = props => {
                 <p className={`course__desc ${props.class + '__desc'}`}>{props.desc}</p>
                 {advantages}
                 <p className={`course__terms ${props.class + '__terms'}`}>{props.terms}</p>
-                <span className={`course__price ${props.class + '__price'}`}>Cena całego kursu: {props.price} {props.class === 'learn-abroad' ? 'GBP' : 'PLN'}</span>
+                <span className={`course__price ${props.class + '__price'}`}>Cena całego kursu: {props.price || 'negocjowana'} {props.price ? (props.class === 'learn-abroad' ? 'GBP' : 'PLN') : ''}</span>
                 <LinkElement
                     to='/basket'
                     className='course__a'
                     type='text'
                     name={props.title}
                     id={props.title}
-                    btnText='dodaj do koszyka'
+                    btnText='zapytaj o dostępność'
                     btn='course-button'
                     arrowClassName='btn-arrow-right--active'
                     click={courseChosenHandler}

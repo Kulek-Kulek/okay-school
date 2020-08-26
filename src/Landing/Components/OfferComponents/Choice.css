@@ -149,6 +149,7 @@
         transition: .3s;
     }
     .offer__button:hover .btn-arrow-right--active {
+        -webkit-animation-play-state: paused;
         animation-play-state: paused;
     }
 }

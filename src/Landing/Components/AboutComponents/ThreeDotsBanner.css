@@ -44,6 +44,12 @@
     cursor: pointer;
 }
 
+@-webkit-keyframes showDots {
+    to {
+        left: 120%;
+    }
+}
+
 @keyframes showDots {
     to {
         left: 120%;

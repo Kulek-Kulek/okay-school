@@ -59,6 +59,22 @@
     animation: cursor .4s linear alternate infinite;
 }
 
+.learn-online__button {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 50%;
+    font-size: .8rem;
+    padding: .5%;
+    border: 1px solid var(--main-color);
+    letter-spacing: 1px;
+    font-family: var(--main-font);
+    background-color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 @keyframes cursor {
     0%, 30% {
         opacity: 0;
@@ -149,6 +165,10 @@
     .learn-online__single-slogan {
         font-size: 1.1rem;
     }
+    .learn-online__button {
+        width: 35%;
+        font-size: .9rem;
+    }
 }
 
 @media (min-width: 1024px) {
@@ -157,5 +177,33 @@
     }
     .learn-online__single-slogan {
         font-size: 2rem;
+    }
+    .learn-online__button {
+        width: 25%;
+        font-size: 1.1rem;
+        font-weight: bold;
+        letter-spacing: 3px;
+        padding: .3%;
+    }
+    .learn-online__button::after {
+        position: absolute;
+        content: 'zapraszam';
+        background-color: var(--green-color);
+        color: #fff;
+        left: 0;
+        top: 0;
+        transform: scale(0);
+        width: 100%;
+        height: 100%;
+        line-height: 30px;
+        font-size: 1.5rem;
+        letter-spacing: 5px;
+        text-shadow: 2px 0 0 var(--main-color);
+        border-radius: 5px;
+        transition: .3s;
+    }
+    .learn-online__button-div:hover .learn-online__button::after {
+        transform: scale(1);
+        transition: .3;
     }
 }

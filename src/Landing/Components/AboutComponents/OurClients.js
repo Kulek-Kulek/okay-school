@@ -33,6 +33,7 @@ const OurClients = props => {
                     <h3 className='our-clients__subtitle'>Profesjonalnie, z pasją</h3>
                     <p className='our-clients__p'>
                         Moi kursanci to osoby wymagające, dla których ważny jest osobisty rozwój, podnoszenie swoich kwalifikacji oraz poczucie, że dobrze zainwestowali swój czas. Dzięki nieustannemu dbaniu o osobisty rozwój poparty międzynarodowymi certyfikatami, takimi jak Certificate of Proficiency in English (University of Cambridge ESOL Examinations), czy First Certificate for Teachers of Business English zdanemu w Londyńskiej Izbie Przemysłowo-Handlowej, mogę zaproponować swoim kursantom sesje z elementami pracy coachingowej z jasno i skutecznie zdefiniowanymi celami językowymi.
+                        <span className='our-clients__signature'>Krzysztof Ługowski</span>
                     </p>
                     <div className='our-clients__button-div'>
                         <LinkElement

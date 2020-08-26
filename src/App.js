@@ -5,14 +5,12 @@ import { useSelector } from 'react-redux';
 import WelcomePage from './Landing/Pages/welcomePage/WelcomePage';
 import AboutPage from './Landing/Pages/AboutPage/AboutPage';
 import OfferPage from './Landing/Pages/OfferPage/OfferPage';
-import StudentPage from './Register/Pages/Student/StudentPage';
 import AuthModal from './Shared/Components/Modal/AuthModal';
 import Backdrop from './Shared/Components/Backdrop/Backdrop';
 import GeneralEnglish from './Landing/Pages/GeneralEnglish/GeneralEnglish';
 import BusinessEnglish from './Landing/Pages/BusinessEnglish/BusinessEnglish';
 import LearnAbroad from './Landing/Pages/LearnAbroad/LearnAbroad';
 import Basket from './Landing/Pages/Basket/Basket';
-import AdminWelcomePage from './Register/Pages/Admin/AdminWelcomePage';
 import { AuthContex } from './Shared/Contex/auth-contex';
 
 import './App.css';
@@ -69,12 +67,6 @@ const App = props => {
           </Route>
           <Route path='/basket' exact>
             <Basket />
-          </Route>
-          <Route path='/register/student' exact>
-            <StudentPage />
-          </Route>
-          <Route path='/register/admin' exact>
-            <AdminWelcomePage />
           </Route>
           <Redirect to='/' exact />
         </Switch>

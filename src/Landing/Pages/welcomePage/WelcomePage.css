@@ -21,9 +21,9 @@
 .welcomePageSloganWrapper__logoSpan:first-of-type {
     display: inline-block;
     color: rgb(223, 14, 153);
-    -webkit-transform: skew(-15deg);
-            transform: skew(-15deg);
+    transform: skew(-15deg);
     font-weight: bold;
+    -webkit-animation: logoScaleSkew .8s ease-in;
     animation: logoScaleSkew .8s ease-in;
 }
 
@@ -31,16 +31,19 @@
     display: inline-block;
     color: orange;
 }
+
 .welcomePageSloganWrapper__logoSpan:nth-of-type(3) {
     display: inline-block;
     color: green;
 }
+
 .welcomePageSloganWrapper__logoSpan:last-of-type {
     display: inline-block;
     color: blue;
 }
 
 .welcomePageSloganWrapper__logoSpan--active {
+    -webkit-animation: logoScale .8s backwards ease-in;
     animation: logoScale .8s backwards ease-in;
 }
 
@@ -50,40 +53,59 @@
     font-size: 1.3rem;
 }
 
+@-webkit-keyframes logoScale {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.8);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
 @keyframes logoScale {
     0% {
-        -webkit-transform: scale(0);
-                transform: scale(0);
+        transform: scale(0);
     }
     50% {
-        -webkit-transform: scale(1.8);
-                transform: scale(1.8);
+        transform: scale(1.8);
     }
     100% {
-        -webkit-transform: scale(1);
-                transform: scale(1);
+        transform: scale(1);
     }
 }
+
+@-webkit-keyframes logoScaleSkew {
+    0% {
+        transform: scale(0);
+        transform: skew(-15deg);
+    }
+    50% {
+        transform: scale(1.8);
+    }
+    100% {
+        transform: scale(1);
+        transform: skew(-15deg);
+    }
+}
+
 @keyframes logoScaleSkew {
     0% {
-        -webkit-transform: scale(0);
-                transform: scale(0);
-                transform: skew(-15deg);
+        transform: scale(0);
+        transform: skew(-15deg);
     }
     50% {
-        -webkit-transform: scale(1.8);
-                transform: scale(1.8);
+        transform: scale(1.8);
     }
     100% {
-        -webkit-transform: scale(1);
-                transform: scale(1);
-                transform: skew(-15deg);
+        transform: scale(1);
+        transform: skew(-15deg);
     }
 }
 
-
-
-@media(orientation: landscape){
+@media(orientation: landscape) {
     .welcomePageSloganWrapper {
         font-size: 3rem;
         left: 30%;
@@ -97,8 +119,7 @@
     }
 }
 
-
-@media(min-width: 1024px){
+@media(min-width: 1024px) {
     .welcomePageSloganWrapper {
         font-size: 4.5rem;
         top: 35%;
@@ -116,4 +137,3 @@
         font-size: 1.8rem;
     }
 }
-

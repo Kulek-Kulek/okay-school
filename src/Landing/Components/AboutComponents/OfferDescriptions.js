@@ -15,13 +15,13 @@ const OfferDecriptions = props => {
             <div className="offers__decription-wrapper">
                 <i className="fas fa-graduation-cap offers__icon"></i>
                 <h2 className="offers__title">dla nastolatków</h2>
-                <p className='offers__description'>To skrojone wyłącznie na Twoją miarę zajęcia językowe z dojazdem do ucznia. W przyjaznej atmosferze swojego domu opanujesz język bez stresu i przełamiesz lęk przed mówieniem po angielsku, a dzięki lekcjom typu one-to-one masz pewność, że lektor jest wyłącznie dla Ciebie. Wszystkie zajęcia prowadzone są przy pomocy multimediów.
+                <p className='offers__description'>To skrojone wyłącznie na Twoją miarę zajęcia językowe. W przyjaznej atmosferze opanujesz język bez stresu i przełamiesz lęk przed mówieniem po angielsku, a dzięki lekcjom w małej grupie masz pewność, że lektor jest wyłącznie dla Ciebie. Wszystkie zajęcia prowadzone są przy pomocy multimediów. Dostępne online i stacjonarnie.
                 </p>
             </div>
             <div className="offers__decription-wrapper">
                 <i className="far fa-calendar-check offers__icon"></i>
                 <h2 className="offers__title">do egzaminów</h2>
-                <p className='offers__description'>Czy to sprawdzian po ósmej klasie, czy może matura, nieważne! Wspólnie opracujemy strategie egzaminacyjne, nadrobimy zaległości, utrwalimy materiał. Zajęcia z dojazdem do domu, na których rozwiniesz wszystkie sprawności językowe w oparciu o zadania zgodne z wymaganiami Centralnej Komisji Egzaminacyjnej.
+                <p className='offers__description'>Czy to sprawdzian po ósmej klasie, czy może matura, nieważne! Wspólnie opracujemy strategie egzaminacyjne, nadrobimy zaległości, załatamy braki, utrwalimy materiał. Zajęcia dostępne online i stacjonarnie, na których rozwiniesz wszystkie sprawności językowe w oparciu o zadania zgodne z wymaganiami Centralnej Komisji Egzaminacyjnej.
                 </p>
             </div>
             <div className="offers__decription-wrapper">

@@ -46,11 +46,11 @@ const Footer = props => {
                     </div>
                     <div className='footer__info-div'>
                         <i className="fas fa-hourglass-end footer__i"></i>
-                        <span className='footer__info-span'>Pn-So: 08.00 - 21.00</span>
+                        <span className='footer__info-span'>Pn-So: 07.00 - 21.00</span>
                     </div>
                     <div className='footer__info-div'>
                         <i className="fas fa-envelope footer__i"></i>
-                        <span className='footer__info-span'>okay@okay.edu.pl</span>
+                        <span className='footer__info-span'>lugowski.k@gmail.com</span>
                     </div>
                     <div className='footer__info-div'>
                         <i className="far fa-lightbulb footer__i"></i>

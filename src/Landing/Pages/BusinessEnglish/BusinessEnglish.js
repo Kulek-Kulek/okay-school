@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import Courses from '../../../Landing/Components/OfferComponents/CourseComponents/Courses';
 import { navigationToggle } from '../../../Shared/Components/Navigation/navigationToggle';
 
-import img1 from '../../../images/slider/me.png';
+import img1 from '../../../images/slider/me.jpg';
 import img2 from '../../../images/slider/b2b1.jpg';
 import img3 from '../../../images/slider/b2b2.jpg';
 

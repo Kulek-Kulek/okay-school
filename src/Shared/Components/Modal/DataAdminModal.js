@@ -210,7 +210,7 @@ const DataAdminModal = props => {
         }
 
         try {
-            const response = await sendRequest(`http://localhost:5000/api/${path}`,
+            const response = await sendRequest(process.env.REACT_APP_BACKEND_URL + '/' + path,
                 method,
                 body,
                 {

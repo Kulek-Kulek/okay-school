@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 import Navigation from '../../../../Shared/Components/Navigation/Navigation';
 import SlidingCarouselBanner from '../../../../Shared/Components/SlidingCarouselBanner/SlidingCarouselBanner';
@@ -9,6 +10,7 @@ import Spinner from '../../../../Shared/Elements/LoadingSpinner/LoadingSpinner';
 import Footer from '../../../../Shared/Components/Footer/Footer';
 import ErrorModal from '../../../../Shared/Components/Modal/ErrorModal';
 import { useHttpClient } from '../../../../Shared/Hooks/http-hook';
+import * as actions from '../../../../store/actions/index';
 
 import ge1 from '../../../../images/gecourses/up.jpg';
 import ge2 from '../../../../images/gecourses/boy-girl.jpg';
@@ -31,6 +33,8 @@ const abImages = [ab1, ab2, ab3];
 
 const Courses = props => {
 
+    const dispatch = useDispatch();
+
     const [loadedCourses, setLoadedCourses] = useState();
     const { loading, sendRequest, error, clearError } = useHttpClient();
     const [errorModalActive, setErrorModalActive] = useState(false);
@@ -38,18 +42,21 @@ const Courses = props => {
     useEffect(() => {
         const fetchCourses = async () => {
             try {
-                const responseData = await sendRequest(`http://localhost:5000/api/offers/${props.courseType}`);
+                const responseData = await sendRequest(process.env.REACT_APP_BACKEND_URL + `/offers/${props.courseType}`);
                 setLoadedCourses(responseData.courses);
             } catch (err) {
                 setErrorModalActive(true);
+                dispatch(actions.errorModalActivator(true, error));
             }
         }
         fetchCourses();
-    }, [sendRequest, props.courseType]);
+    }, [sendRequest, props.courseType, dispatch, error]);
 
     const errorModalCancelHandler = () => {
         setErrorModalActive(false);
         clearError();
+        dispatch(actions.errorModalActivator(false, error));
+
     }
 
     let images;

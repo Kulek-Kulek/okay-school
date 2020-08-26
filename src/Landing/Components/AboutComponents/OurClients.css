@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap');
 .our-clients {
     display: flex;
     flex-direction: column;
@@ -6,7 +7,7 @@
 }
 
 .our-clients__motto {
-    flex-basis: 60%;
+    flex-basis: 62%;
     background-color: var(--main-color);
     display: flex;
 }
@@ -56,6 +57,14 @@
 .our-clients__p::first-letter {
     color: var(--green-color);
     font-size: 1.4rem;
+}
+
+.our-clients__signature {
+    display: block;
+    margin-top: 2%;
+    text-align: end;
+    font-size: 1rem;
+    font-family: 'Dancing Script', cursive;
 }
 
 .our-clients__companies {
@@ -121,7 +130,7 @@
     border: 1px solid #fff;
     border-radius: 5px;
     background-color: transparent;
-    color: inherit;
+    color: #fff;
     letter-spacing: 3px;
     font-family: var(--main-font);
     cursor: pointer;
@@ -147,6 +156,9 @@
     .our-clients__p::first-letter {
         font-size: 1.6rem;
     }
+    .our-clients__signature {
+        font-size: 1.1rem;
+    }
     .our-clients__button-div {
         margin-top: 4%;
         width: 30%;
@@ -169,7 +181,7 @@
         padding: 20px 0;
     }
     .our-clients__motto {
-        flex-basis: 50%;
+        flex-basis: 55%;
     }
     .our-clients__companies {
         flex-basis: 50%;
@@ -199,6 +211,9 @@
     .our-clients__p::first-letter {
         font-size: 1.8rem;
         font-weight: bold;
+    }
+    .our-clients__signature {
+        font-size: 1.3rem;
     }
     .our-clients__a {
         text-decoration: none;

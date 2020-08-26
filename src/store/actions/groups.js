@@ -17,7 +17,7 @@ export const loadingGroupsFailed = () => {
 
 export const fetchGroups = (chooseTitle) => {
     return dispatch => {
-        fetch('http://localhost:5000/api/groups')
+        fetch(process.env.REACT_APP_BACKEND_URL + '/groups')
             .then(res => res.json())
             .then(data => dispatch(loadGroups(data.groups, chooseTitle)))
             .catch(err => {
