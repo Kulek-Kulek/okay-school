@@ -1,7 +1,7 @@
 .footer {
     position: relative;
     display: flex;
-    height: 20vh;
+    height: 30vh;
     background-color: rgba(51, 34, 34, .9);
 }
 
@@ -46,7 +46,7 @@
 
 .footer__info-div {
     color: #fff;
-    font-size: .65rem;
+    font-size: .6rem;
     flex-basis: 50%;
     font-family: sans-serif;
     text-shadow: 2px 1px 0 black;
@@ -91,6 +91,28 @@
     font-size: .7rem;
     margin-left: 4%;
     text-shadow: 2px 1px 0 black;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+}
+
+.footer__rules {
+    width: 100%;
+    margin-top: 15%;
+    display: flex;
+    /* justify-content: space-around; */
+}
+
+.footer__school-rules, .footer__moneytransfer-rules {
+    font-size: .4rem;
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer__school-rules:hover, .footer__moneytransfer-rules:hover {
+    color: rgb(194, 194, 194);
+    text-decoration: underline;
 }
 
 @media (orientation: landscape) {
@@ -128,11 +150,15 @@
         font-family: var(--main-font);
         font-size: 1rem;
     }
+    .footer__rules {
+        margin-top: 5%;
+        justify-content: space-between;
+    }
 }
 
 @media (min-width: 1024px) {
     .footer {
-        height: 35vh;
+        height: 45vh;
         /* margin-top: 10vh; */
     }
     .footer__logo-span, .footer__pink {
@@ -192,5 +218,8 @@
     .footer__info-div-button:hover .footer__button::after {
         transform: scale(1);
         transition: .3;
+    }
+    .footer__school-rules, .footer__moneytransfer-rules {
+        font-size: .8rem;
     }
 }

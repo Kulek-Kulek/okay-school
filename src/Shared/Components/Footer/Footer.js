@@ -8,6 +8,7 @@ import Button from '../../Elements/Button/Button';
 import ContactModal from '../Modal/ContactModal';
 import videoSrc from '../../../videos/video.mp4';
 import * as actions from '../../../store/actions/index';
+import { Link } from 'react-router-dom';
 
 
 const Footer = props => {
@@ -67,6 +68,10 @@ const Footer = props => {
                     <div className='footer__info-div'>
                         Przyjemność uczenia się
                         <div className='footer__info-underline'></div>
+                        <div className='footer__rules'>
+                            <Link to='regulations/school-rules' className='footer__school-rules'>Regulamin Szkoły</Link>
+                            {/* <Link to='regulations/moneytransfer-rules' className='footer__moneytransfer-rules'>Regulamin Przelewy24</Link> */}
+                        </div>
                     </div>
                 </div>
             </footer>

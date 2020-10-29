@@ -35,8 +35,8 @@ const Globe = props => {
         <section className='globe'>
             <div className="globe__img-wrapper">
                 <img src={imgGlobe} alt='globe' className='globe__img' />
-                <h2 className='globe__slogan globe__slogan-minor'>ZOOM i TEAMS</h2>
-                <h4 className='globe__slogan globe__slogan-main'>ucząc się lokalnie na platformach</h4>
+                <h2 className='globe__slogan globe__slogan-minor'>ZOOM <span className='globe_and'>i</span> TEAMS</h2>
+                <h4 className='globe__slogan globe__slogan-main'>ucz się lokalnie na platformach</h4>
             </div>
             <div className='globe__button-wrapper'>
                 <span className='globe__find-me-question'>Jak nas znaleźć?</span>

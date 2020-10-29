@@ -37,6 +37,10 @@
     transform: skewX(-20deg) rotateX(20deg);
 }
 
+.globe_and {
+    color: var(--main-color);
+}
+
 .globe__slogan-minor {
     color: var(--green-color);
     text-transform: none;
@@ -133,6 +137,7 @@
     }
     .globe__slogan {
         font-size: 2.5rem;
+        padding: 0 5%;
     }
     .globe__slogan:nth-child(2) {
         font-size: 2rem;

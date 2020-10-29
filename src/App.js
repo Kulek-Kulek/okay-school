@@ -11,6 +11,7 @@ import Backdrop from './Shared/Components/Backdrop/Backdrop';
 // import BusinessEnglish from './Landing/Pages/BusinessEnglish/BusinessEnglish';
 // import LearnAbroad from './Landing/Pages/LearnAbroad/LearnAbroad';
 // import Basket from './Landing/Pages/Basket/Basket';
+import SchoolRules from './Landing/Pages/Regulations/SchoolRules';
 import { AuthContex } from './Shared/Contex/auth-contex';
 import LoadingSpinner from './Shared/Elements/LoadingSpinner/LoadingSpinner';
 import './App.css';
@@ -76,11 +77,13 @@ const App = props => {
             <Route path='/basket' exact>
               <Basket />
             </Route>
+            <Route path='/regulations/school-rules' exact>
+              <SchoolRules />
+            </Route>
             <Redirect to='/' exact />
           </Suspense>
         </Switch>
       </Router >
-
     </AuthContex.Provider >
   );
 };

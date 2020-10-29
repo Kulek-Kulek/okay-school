@@ -1,0 +1,55 @@
+.school-rules__main {
+    margin-top: 12vh;
+}
+
+.school-rules__heading-div {
+    background-color: var(--main-color);
+    padding: 1% 0;
+}
+
+.school-rules__heading {
+    color: #fff;
+    font-size: .8rem;
+    text-transform: uppercase;
+    font-family: var(--main-font);
+    text-shadow: 1px 1px black;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.school-rule__heading {
+    font-size: .8rem;
+    text-align: center;
+    margin: 3% 0 1%;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 1% 0;
+    letter-spacing: 1px;
+    background-color: #ddd;
+}
+
+.school-rules__single-rule {
+    padding: 1% 3%;
+    font-size: .8rem;
+}
+
+@media(orientation: landscape) {
+    .school-rules__main {
+        margin-top: 20vh;
+    }
+}
+
+@media(min-width:1024px) {
+    .school-rules__main {
+        margin-top: 15vh;
+    }
+    .school-rules__heading {
+        font-size: 1.1rem;
+    }
+    .school-rule__heading {
+        font-size: 1rem;
+    }
+    .school-rules__single-rule {
+        font-size: 1rem;
+    }
+}

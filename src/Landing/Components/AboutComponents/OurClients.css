@@ -2,12 +2,12 @@
 .our-clients {
     display: flex;
     flex-direction: column;
-    height: 105vh;
+    height: 125vh;
     margin-bottom: 5%;
 }
 
 .our-clients__motto {
-    flex-basis: 62%;
+    flex-basis: 55%;
     background-color: var(--main-color);
     display: flex;
 }
@@ -61,7 +61,7 @@
 
 .our-clients__signature {
     display: block;
-    margin-top: 2%;
+    margin-top: 5%;
     text-align: end;
     font-size: 1rem;
     font-family: 'Dancing Script', cursive;
@@ -81,7 +81,7 @@
     letter-spacing: 3px;
     text-shadow: 2px 2px 0 var(--main-color);
     color: #fff;
-    flex-basis: 25%;
+    flex-basis: 20%;
     background-color: var(--green-color);
 }
 
@@ -120,7 +120,7 @@
 
 .our-clients__button-div {
     margin-top: 8%;
-    width: 40%;
+    width: 70%;
 }
 
 .our-clients__button {
@@ -177,7 +177,7 @@
     .our-clients {
         flex-direction: row;
         margin: 0 2% 5% 2%;
-        height: 100vh;
+        height: 105vh;
         padding: 20px 0;
     }
     .our-clients__motto {
@@ -187,7 +187,7 @@
         flex-basis: 50%;
     }
     .our-clients__right {
-        flex-basis: 65%;
+        flex-basis: 70%;
         padding: 0 8% 0 0;
     }
     .our-clients__main-title {

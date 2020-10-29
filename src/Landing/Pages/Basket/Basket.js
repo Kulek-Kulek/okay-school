@@ -21,6 +21,7 @@ import './Basket.css';
 const Basket = props => {
 
     const basket = useSelector(state => state.basket);
+
     const dispatch = useDispatch();
 
     const [weekDays, setWeekDays] = useState();
@@ -117,7 +118,7 @@ const Basket = props => {
                     courseRules: formState.inputs.orderCourseRules.value,
                     lessonType: formState.inputs.orderCourseType.value,
                     courseName: basket.courseName,
-                    coursePrice: basket.price,
+                    coursePrice: basket.price ? basket.price : 'negocjowana',
                     unavailable: weekDays,
                     submissionDate: new Date().toLocaleDateString(),
                     submissionTime: new Date().toLocaleTimeString(),
@@ -128,7 +129,6 @@ const Basket = props => {
             setErrorModalActive(true);
             dispatch(actions.errorModalActivator(true, error));
         } catch (err) {
-            console.log(err);
             setErrorModalActive(true);
             dispatch(actions.errorModalActivator(true, error));
         }
@@ -162,7 +162,10 @@ const Basket = props => {
             </ React.Fragment>
         )
     )
-
+    let price = 'negocjowana';
+    if (basket.price) {
+        price = `${basket.price} PLN`
+    }
 
     return (
         <React.Fragment>
@@ -183,7 +186,7 @@ const Basket = props => {
                                 </div>
                                 <div className='basket__course-price'>
                                     <span>{`Forma zajęć: ${formState.inputs.orderCourseType.value}`}</span>
-                                    <span>{`Cena całego kursu: ${basket.price} PLN`}</span>
+                                    <span>{`Cena całego kursu: ${price}`}</span>
                                     <span>Możesz zrezygnować w ciągu dwóch tygodni</span>
                                 </div>
                             </div>

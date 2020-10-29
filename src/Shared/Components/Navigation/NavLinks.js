@@ -21,7 +21,7 @@ const NavLinks = props => {
     const menuList = [
         { name: 'home', path: '/about', exact: true },
         { name: 'oferta kursów', path: '/offer' },
-        { name: 'e-dziennik', path: '/register' }
+        // { name: 'e-dziennik', path: '/register' }
     ];
 
 
@@ -49,6 +49,9 @@ const NavLinks = props => {
         <ul className='navigation__list'>
             {navLinks}
             {/* {loginButton} */}
+            <li className='navigation__li'>
+                <a href='https://i-okay-maria.web.app' className='navigation__link'>e-sekretariat</a>
+            </li>
         </ul>
     );
 };
