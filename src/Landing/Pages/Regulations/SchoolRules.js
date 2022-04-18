@@ -12,7 +12,7 @@ const schoolRules = [
     {
         heading: 'postanowienia ogólne',
         rules: [
-            'Niniejszy regulamin określa zasady prowadzenia kursów językowych online, z dojazdem do ucznia oraz mieszanych (blended) przez szkołę językową OKAY, zwaną w dalszej części Szkołą.', 'W ramach swoich usług, szkoła prowadzi kursy językowe indywidualne i grupowe.', 'Każdy słuchacz Szkoły, zwany dalej Uczniem, ma obowiązek zapoznania się z niniejszym regulaminem. Rozpoczęcie nauki w Szkole jest tożsame z akceptacją niniejszego regulaminu.', 'W ramach wykupionego przez ucznia kursu językowego Szkoła zobowiązuje się do zapewnienia wykwalifikowanego lektora oraz właściwego doboru programu nauczania w celu realizacji zajęć.']
+            'Niniejszy regulamin określa zasady prowadzenia kursów językowych online, z dojazdem do ucznia oraz mieszanych (blended) przez szkołę językową OKAY język angielski Krzysztof Ługowski, ul. Jarzębinowa 7, 98-270 Złoczew, NIP: 827-202-66-15, Regon: 381154529, zwaną w dalszej części Szkołą.', 'W ramach swoich usług, szkoła prowadzi kursy językowe indywidualne i grupowe.', 'Każdy słuchacz Szkoły, zwany dalej Uczniem, ma obowiązek zapoznania się z niniejszym regulaminem. Rozpoczęcie nauki w Szkole jest tożsame z akceptacją niniejszego regulaminu.', 'W ramach wykupionego przez ucznia kursu językowego Szkoła zobowiązuje się do zapewnienia wykwalifikowanego lektora oraz właściwego doboru programu nauczania w celu realizacji zajęć.']
     },
     {
         heading: 'zapisy na kurs',
